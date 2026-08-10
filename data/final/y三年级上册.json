@@ -1,0 +1,3979 @@
+{
+ "book": "y三年级上册",
+ "tables": {
+  "shizi": {
+   "lessons": [
+    {
+     "no": 1,
+     "type": null,
+     "chars": [
+      {
+       "char": "坝",
+       "pinyin": "Bà",
+       "strokes": 7,
+       "radical": "土",
+       "structure": "左右结构"
+      },
+      {
+       "char": "汉",
+       "pinyin": "Hàn",
+       "strokes": 5,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "艳",
+       "pinyin": "Yàn",
+       "strokes": 10,
+       "radical": "色",
+       "structure": "左右结构"
+      },
+      {
+       "char": "扮",
+       "pinyin": "Bàn",
+       "strokes": 7,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "扬",
+       "pinyin": "Yáng",
+       "strokes": 6,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "读",
+       "pinyin": "Dú",
+       "strokes": 10,
+       "radical": "讠",
+       "structure": "左右结构"
+      },
+      {
+       "char": "摔",
+       "pinyin": "Shuāi",
+       "strokes": 14,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "跤",
+       "pinyin": "Jiāo",
+       "strokes": 13,
+       "radical": "足",
+       "structure": "左右结构"
+      },
+      {
+       "char": "凤",
+       "pinyin": "Fèng",
+       "strokes": 4,
+       "radical": "几",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "洁",
+       "pinyin": "Jié",
+       "strokes": 9,
+       "radical": "氵",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 2,
+     "type": null,
+     "chars": [
+      {
+       "char": "荒",
+       "pinyin": "Huāng",
+       "strokes": 9,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "笛",
+       "pinyin": "Dí",
+       "strokes": 11,
+       "radical": "竹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "罚",
+       "pinyin": "Fá",
+       "strokes": 9,
+       "radical": "罒",
+       "structure": "上下结构"
+      },
+      {
+       "char": "假",
+       "pinyin": "Jiǎ",
+       "strokes": 11,
+       "radical": "亻",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "裳",
+       "pinyin": "Cháng",
+       "strokes": 14,
+       "radical": "衣",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "no": 3,
+     "type": null,
+     "chars": [
+      {
+       "char": "背",
+       "pinyin": "Bèi",
+       "strokes": 9,
+       "radical": "月",
+       "structure": "上下结构"
+      },
+      {
+       "char": "诵",
+       "pinyin": "Sòng",
+       "strokes": 9,
+       "radical": "讠",
+       "structure": "左右结构"
+      },
+      {
+       "char": "例",
+       "pinyin": "Lì",
+       "strokes": 8,
+       "radical": "亻",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "圈",
+       "pinyin": "Quān",
+       "strokes": 11,
+       "radical": "囗",
+       "structure": "全包围结构"
+      },
+      {
+       "char": "段",
+       "pinyin": "Duàn",
+       "strokes": 9,
+       "radical": "殳",
+       "structure": "左右结构"
+      },
+      {
+       "char": "糊",
+       "pinyin": "Hú",
+       "strokes": 15,
+       "radical": "米",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "涂",
+       "pinyin": "Tú",
+       "strokes": 10,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "呆",
+       "pinyin": "Dāi",
+       "strokes": 7,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "戒",
+       "pinyin": "Jiè",
+       "strokes": 7,
+       "radical": "戈",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "厉",
+       "pinyin": "Lì",
+       "strokes": 5,
+       "radical": "厂",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "挨",
+       "pinyin": "Ái",
+       "strokes": 10,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "楚",
+       "pinyin": "Chǔ",
+       "strokes": 13,
+       "radical": "木",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "no": 4,
+     "type": null,
+     "chars": [
+      {
+       "char": "径",
+       "pinyin": "Jìng",
+       "strokes": 8,
+       "radical": "彳",
+       "structure": "左右结构"
+      },
+      {
+       "char": "斜",
+       "pinyin": "Xié",
+       "strokes": 11,
+       "radical": "斗",
+       "structure": "左右结构"
+      },
+      {
+       "char": "赠",
+       "pinyin": "Zèng",
+       "strokes": 16,
+       "radical": "贝",
+       "structure": "左右结构"
+      },
+      {
+       "char": "残",
+       "pinyin": "Cán",
+       "strokes": 9,
+       "radical": "歹",
+       "structure": "左右结构"
+      },
+      {
+       "char": "犹",
+       "pinyin": "Yóu",
+       "strokes": 7,
+       "radical": "犭",
+       "structure": "左右结构"
+      },
+      {
+       "char": "傲",
+       "pinyin": "Ào",
+       "strokes": 12,
+       "radical": "亻",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "君",
+       "pinyin": "Jūn",
+       "strokes": 7,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "橙",
+       "pinyin": "Chéng",
+       "strokes": 16,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "橘",
+       "pinyin": "Jú",
+       "strokes": 16,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "挑",
+       "pinyin": "Tiǎo",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 5,
+     "type": null,
+     "chars": [
+      {
+       "char": "洼",
+       "pinyin": "Wā",
+       "strokes": 9,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "印",
+       "pinyin": "Yìn",
+       "strokes": 5,
+       "radical": "卩",
+       "structure": "左右结构"
+      },
+      {
+       "char": "凌",
+       "pinyin": "Líng",
+       "strokes": 10,
+       "radical": "冫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "增",
+       "pinyin": "Zēng",
+       "strokes": 15,
+       "radical": "土",
+       "structure": "左右结构"
+      },
+      {
+       "char": "棕",
+       "pinyin": "Zōng",
+       "strokes": 12,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "靴",
+       "pinyin": "Xuē",
+       "strokes": 13,
+       "radical": "革",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 6,
+     "type": null,
+     "chars": [
+      {
+       "char": "钥",
+       "pinyin": "Yào",
+       "strokes": 9,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "匙",
+       "pinyin": "Shi",
+       "strokes": 11,
+       "radical": "匕",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "缤",
+       "pinyin": "Bīn",
+       "strokes": 13,
+       "radical": "纟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "枚",
+       "pinyin": "Méi",
+       "strokes": 8,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "频",
+       "pinyin": "Pín",
+       "strokes": 13,
+       "radical": "页",
+       "structure": "左右结构"
+      },
+      {
+       "char": "勾",
+       "pinyin": "Gòu",
+       "strokes": 4,
+       "radical": "勹",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "喇",
+       "pinyin": "Lá",
+       "strokes": 12,
+       "radical": "口",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "叭",
+       "pinyin": "Bā",
+       "strokes": 5,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "厚",
+       "pinyin": "Hòu",
+       "strokes": 9,
+       "radical": "厂",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "曲",
+       "pinyin": "Qǔ",
+       "strokes": 6,
+       "radical": "曰",
+       "structure": "独体结构"
+      },
+      {
+       "char": "丰",
+       "pinyin": "Fēng",
+       "strokes": 4,
+       "radical": "丨",
+       "structure": "独体结构"
+      }
+     ]
+    },
+    {
+     "no": 7,
+     "type": null,
+     "chars": [
+      {
+       "char": "抖",
+       "pinyin": "Dǒu",
+       "strokes": 7,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蟋",
+       "pinyin": "Xī",
+       "strokes": 17,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蟀",
+       "pinyin": "Shuài",
+       "strokes": 17,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "振",
+       "pinyin": "Zhèn",
+       "strokes": 10,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "韵",
+       "pinyin": "Yùn",
+       "strokes": 13,
+       "radical": "音",
+       "structure": "左右结构"
+      },
+      {
+       "char": "掠",
+       "pinyin": "Lüè",
+       "strokes": 11,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "吟",
+       "pinyin": "Yín",
+       "strokes": 7,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "辽",
+       "pinyin": "Liáo",
+       "strokes": 5,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "阔",
+       "pinyin": "Kuò",
+       "strokes": 12,
+       "radical": "门",
+       "structure": "半包围结构"
+      }
+     ]
+    },
+    {
+     "no": 8,
+     "type": null,
+     "chars": [
+      {
+       "char": "捡",
+       "pinyin": "Jiǎn",
+       "strokes": 10,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "旧",
+       "pinyin": "Jiù",
+       "strokes": 5,
+       "radical": "日",
+       "structure": "左右结构"
+      },
+      {
+       "char": "饿",
+       "pinyin": "È",
+       "strokes": 10,
+       "radical": "饣",
+       "structure": "左右结构"
+      },
+      {
+       "char": "卷",
+       "pinyin": "Juàn",
+       "strokes": 8,
+       "radical": "厄",
+       "structure": "上下结构"
+      },
+      {
+       "char": "挣",
+       "pinyin": "Zhèng",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "几",
+       "pinyin": "Jǐ",
+       "strokes": 2,
+       "radical": "几",
+       "structure": "独体结构"
+      },
+      {
+       "char": "燃",
+       "pinyin": "Rán",
+       "strokes": 16,
+       "radical": "火",
+       "structure": "左右结构"
+      },
+      {
+       "char": "焰",
+       "pinyin": "Yàn",
+       "strokes": 12,
+       "radical": "火",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蜡",
+       "pinyin": "Zhà",
+       "strokes": 14,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "烛",
+       "pinyin": "Zhú",
+       "strokes": 10,
+       "radical": "火",
+       "structure": "左右结构"
+      },
+      {
+       "char": "富",
+       "pinyin": "Fù",
+       "strokes": 12,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "晃",
+       "pinyin": "Huàng",
+       "strokes": 10,
+       "radical": "日",
+       "structure": "上下结构"
+      },
+      {
+       "char": "划",
+       "pinyin": "Huá",
+       "strokes": 6,
+       "radical": "刂",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 9,
+     "type": null,
+     "chars": [
+      {
+       "char": "缩",
+       "pinyin": "Suō",
+       "strokes": 14,
+       "radical": "纟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "努",
+       "pinyin": "Nǔ",
+       "strokes": 7,
+       "radical": "力",
+       "structure": "上下结构"
+      },
+      {
+       "char": "茎",
+       "pinyin": "Jīng",
+       "strokes": 8,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "锯",
+       "pinyin": "Jù",
+       "strokes": 13,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "斧",
+       "pinyin": "Fǔ",
+       "strokes": 8,
+       "radical": "斤",
+       "structure": "上下结构"
+      },
+      {
+       "char": "推",
+       "pinyin": "Tuī",
+       "strokes": 11,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "吱",
+       "pinyin": "Zhī",
+       "strokes": 7,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "拆",
+       "pinyin": "Chāi",
+       "strokes": 8,
+       "radical": "扌",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 10,
+     "type": null,
+     "chars": [
+      {
+       "char": "咱",
+       "pinyin": "Zán",
+       "strokes": 9,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "偷",
+       "pinyin": "Tōu",
+       "strokes": 11,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "答",
+       "pinyin": "Dá",
+       "strokes": 12,
+       "radical": "竹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "应",
+       "pinyin": "Yìng",
+       "strokes": 7,
+       "radical": "广",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "骨",
+       "pinyin": "Gǔ",
+       "strokes": 9,
+       "radical": "骨",
+       "structure": "上下结构"
+      },
+      {
+       "char": "齿",
+       "pinyin": "Chǐ",
+       "strokes": 8,
+       "radical": "齿",
+       "structure": "上下结构"
+      },
+      {
+       "char": "嚼",
+       "pinyin": "Jiáo",
+       "strokes": 20,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "吞",
+       "pinyin": "Tūn",
+       "strokes": 7,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "胃",
+       "pinyin": "Wèi",
+       "strokes": 9,
+       "radical": "月",
+       "structure": "上下结构"
+      },
+      {
+       "char": "悲",
+       "pinyin": "Bēi",
+       "strokes": 12,
+       "radical": "忄",
+       "structure": "上下结构"
+      },
+      {
+       "char": "咽",
+       "pinyin": "Yè",
+       "strokes": 9,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "泪",
+       "pinyin": "Lèi",
+       "strokes": 8,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "眯",
+       "pinyin": "Mí",
+       "strokes": 11,
+       "radical": "目",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 11,
+     "type": null,
+     "chars": [
+      {
+       "char": "酪",
+       "pinyin": "Lào",
+       "strokes": 13,
+       "radical": "酉",
+       "structure": "左右结构"
+      },
+      {
+       "char": "宣",
+       "pinyin": "Xuān",
+       "strokes": 9,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "处",
+       "pinyin": "Chù",
+       "strokes": 5,
+       "radical": "夂",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "诱",
+       "pinyin": "Yòu",
+       "strokes": 9,
+       "radical": "讠",
+       "structure": "左右结构"
+      },
+      {
+       "char": "舔",
+       "pinyin": "Tiǎn",
+       "strokes": 14,
+       "radical": "舌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "毅",
+       "pinyin": "Yì",
+       "strokes": 15,
+       "radical": "殳",
+       "structure": "左右结构"
+      },
+      {
+       "char": "犯",
+       "pinyin": "Fàn",
+       "strokes": 5,
+       "radical": "犭",
+       "structure": "左右结构"
+      },
+      {
+       "char": "禁",
+       "pinyin": "Jìn",
+       "strokes": 13,
+       "radical": "示",
+       "structure": "上下结构"
+      },
+      {
+       "char": "稍",
+       "pinyin": "Shào",
+       "strokes": 12,
+       "radical": "禾",
+       "structure": "左右结构"
+      },
+      {
+       "char": "豫",
+       "pinyin": "Yù",
+       "strokes": 15,
+       "radical": "豕",
+       "structure": "左右结构"
+      },
+      {
+       "char": "跺",
+       "pinyin": "Duǒ",
+       "strokes": 13,
+       "radical": "足",
+       "structure": "左右结构"
+      },
+      {
+       "char": "聚",
+       "pinyin": "Jù",
+       "strokes": 14,
+       "radical": "耳",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "no": 12,
+     "type": null,
+     "chars": [
+      {
+       "char": "暴",
+       "pinyin": "Bào",
+       "strokes": 15,
+       "radical": "日",
+       "structure": "上下结构"
+      },
+      {
+       "char": "喵",
+       "pinyin": "Miāo",
+       "strokes": 11,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "孵",
+       "pinyin": "Fū",
+       "strokes": 14,
+       "radical": "子",
+       "structure": "左右结构"
+      },
+      {
+       "char": "叽",
+       "pinyin": "Jī",
+       "strokes": 5,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "偶",
+       "pinyin": "Ǒu",
+       "strokes": 11,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "尔",
+       "pinyin": "Ěr",
+       "strokes": 5,
+       "radical": "小",
+       "structure": "独体结构"
+      }
+     ]
+    },
+    {
+     "no": 13,
+     "type": null,
+     "chars": [
+      {
+       "char": "萝",
+       "pinyin": "Luó",
+       "strokes": 11,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "卜",
+       "pinyin": "Bo",
+       "strokes": 2,
+       "radical": "卜",
+       "structure": "独体结构"
+      },
+      {
+       "char": "愁",
+       "pinyin": "Chóu",
+       "strokes": 13,
+       "radical": "心",
+       "structure": "上下结构"
+      },
+      {
+       "char": "沾",
+       "pinyin": "Zhān",
+       "strokes": 8,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "继",
+       "pinyin": "Jì",
+       "strokes": 10,
+       "radical": "纟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "晾",
+       "pinyin": "Liàng",
+       "strokes": 12,
+       "radical": "日",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 14,
+     "type": null,
+     "chars": [
+      {
+       "char": "吗",
+       "pinyin": "Má",
+       "strokes": 6,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "讨",
+       "pinyin": "Tǎo",
+       "strokes": 5,
+       "radical": "讠",
+       "structure": "左右结构"
+      },
+      {
+       "char": "厌",
+       "pinyin": "Yā",
+       "strokes": 6,
+       "radical": "厂",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "怒",
+       "pinyin": "Nù",
+       "strokes": 9,
+       "radical": "心",
+       "structure": "上下结构"
+      },
+      {
+       "char": "批",
+       "pinyin": "Pī",
+       "strokes": 7,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "访",
+       "pinyin": "Fǎng",
+       "strokes": 6,
+       "radical": "讠",
+       "structure": "左右结构"
+      },
+      {
+       "char": "担",
+       "pinyin": "Dàn",
+       "strokes": 8,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "压",
+       "pinyin": "Yā",
+       "strokes": 6,
+       "radical": "厂",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "差",
+       "pinyin": "Chà",
+       "strokes": 9,
+       "radical": "工",
+       "structure": "上下结构"
+      },
+      {
+       "char": "默",
+       "pinyin": "Mò",
+       "strokes": 16,
+       "radical": "黑",
+       "structure": "左右结构"
+      },
+      {
+       "char": "模",
+       "pinyin": "Mó",
+       "strokes": 14,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "中",
+       "pinyin": "Zhōng",
+       "strokes": 4,
+       "radical": "丨",
+       "structure": "独体结构"
+      },
+      {
+       "char": "弹",
+       "pinyin": "Dàn",
+       "strokes": 11,
+       "radical": "",
+       "structure": ""
+      }
+     ]
+    },
+    {
+     "no": 15,
+     "type": null,
+     "chars": [
+      {
+       "char": "父",
+       "pinyin": "Fù",
+       "strokes": 4,
+       "radical": "父",
+       "structure": "独体结构"
+      },
+      {
+       "char": "啦",
+       "pinyin": "Lā",
+       "strokes": 11,
+       "radical": "口",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "鹦",
+       "pinyin": "Yīng",
+       "strokes": 16,
+       "radical": "鸟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "鹉",
+       "pinyin": "Wǔ",
+       "strokes": 13,
+       "radical": "鸟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "悄",
+       "pinyin": "Qiāo",
+       "strokes": 10,
+       "radical": "忄",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 16,
+     "type": null,
+     "chars": [
+      {
+       "char": "蒲",
+       "pinyin": "Pú",
+       "strokes": 13,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "英",
+       "pinyin": "Yīng",
+       "strokes": 8,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "耍",
+       "pinyin": "Shuǎ",
+       "strokes": 9,
+       "radical": "而",
+       "structure": "上下结构"
+      },
+      {
+       "char": "欠",
+       "pinyin": "Qiàn",
+       "strokes": 4,
+       "radical": "欠",
+       "structure": "独体结构"
+      },
+      {
+       "char": "钓",
+       "pinyin": "Diào",
+       "strokes": 8,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "拢",
+       "pinyin": "Lǒng",
+       "strokes": 8,
+       "radical": "扌",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 17,
+     "type": null,
+     "chars": [
+      {
+       "char": "亦",
+       "pinyin": "Yì",
+       "strokes": 6,
+       "radical": "亠",
+       "structure": "独体结构"
+      },
+      {
+       "char": "抹",
+       "pinyin": "Mā",
+       "strokes": 8,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "宜",
+       "pinyin": "Yí",
+       "strokes": 8,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "庭",
+       "pinyin": "Tíng",
+       "strokes": 9,
+       "radical": "广",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "未",
+       "pinyin": "Wèi",
+       "strokes": 5,
+       "radical": "木",
+       "structure": "独体结构"
+      },
+      {
+       "char": "磨",
+       "pinyin": "Mó",
+       "strokes": 16,
+       "radical": "石",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "盘",
+       "pinyin": "Pán",
+       "strokes": 11,
+       "radical": "皿",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "no": 18,
+     "type": null,
+     "chars": [
+      {
+       "char": "饶",
+       "pinyin": "Ráo",
+       "strokes": 9,
+       "radical": "饣",
+       "structure": "左右结构"
+      },
+      {
+       "char": "优",
+       "pinyin": "Yōu",
+       "strokes": 6,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "瑰",
+       "pinyin": "Guī",
+       "strokes": 13,
+       "radical": "王",
+       "structure": "左右结构"
+      },
+      {
+       "char": "岩",
+       "pinyin": "Yán",
+       "strokes": 8,
+       "radical": "山",
+       "structure": "上下结构"
+      },
+      {
+       "char": "参",
+       "pinyin": "Cān",
+       "strokes": 8,
+       "radical": "厶",
+       "structure": "上下结构"
+      },
+      {
+       "char": "武",
+       "pinyin": "Wǔ",
+       "strokes": 8,
+       "radical": "止",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "栖",
+       "pinyin": "Qī",
+       "strokes": 10,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "粪",
+       "pinyin": "Fèn",
+       "strokes": 12,
+       "radical": "米",
+       "structure": "上下结构"
+      },
+      {
+       "char": "辈",
+       "pinyin": "Bèi",
+       "strokes": 12,
+       "radical": "车",
+       "structure": "上下结构"
+      },
+      {
+       "char": "设",
+       "pinyin": "Shè",
+       "strokes": 6,
+       "radical": "讠",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 19,
+     "type": null,
+     "chars": [
+      {
+       "char": "滨",
+       "pinyin": "Bīn",
+       "strokes": 13,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "鸥",
+       "pinyin": "Ōu",
+       "strokes": 9,
+       "radical": "鸟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "胳",
+       "pinyin": "Gé",
+       "strokes": 10,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "臂",
+       "pinyin": "Bì",
+       "strokes": 17,
+       "radical": "月",
+       "structure": "上下结构"
+      },
+      {
+       "char": "睬",
+       "pinyin": "Cǎi",
+       "strokes": 13,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "载",
+       "pinyin": "Zài",
+       "strokes": 10,
+       "radical": "车",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "凰",
+       "pinyin": "Huáng",
+       "strokes": 11,
+       "radical": "几",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "亚",
+       "pinyin": "Yà",
+       "strokes": 6,
+       "radical": "二",
+       "structure": "独体结构"
+      },
+      {
+       "char": "榕",
+       "pinyin": "Róng",
+       "strokes": 14,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "凳",
+       "pinyin": "Dèng",
+       "strokes": 14,
+       "radical": "几",
+       "structure": "上下结构"
+      },
+      {
+       "char": "逢",
+       "pinyin": "Féng",
+       "strokes": 10,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "除",
+       "pinyin": "Chú",
+       "strokes": 9,
+       "radical": "阝",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 20,
+     "type": null,
+     "chars": [
+      {
+       "char": "兴",
+       "pinyin": "Xìng",
+       "strokes": 6,
+       "radical": "八",
+       "structure": "上下结构"
+      },
+      {
+       "char": "融",
+       "pinyin": "Róng",
+       "strokes": 16,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "侧",
+       "pinyin": "Cè",
+       "strokes": 8,
+       "radical": "亻",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "欣",
+       "pinyin": "Xīn",
+       "strokes": 8,
+       "radical": "欠",
+       "structure": "左右结构"
+      },
+      {
+       "char": "浸",
+       "pinyin": "Jìn",
+       "strokes": 10,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "乳",
+       "pinyin": "Rǔ",
+       "strokes": 8,
+       "radical": "乚",
+       "structure": "左右结构"
+      },
+      {
+       "char": "梢",
+       "pinyin": "Shāo",
+       "strokes": 11,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "舍",
+       "pinyin": "Shě",
+       "strokes": 8,
+       "radical": "舌",
+       "structure": "上下结构"
+      },
+      {
+       "char": "显",
+       "pinyin": "Xiǎn",
+       "strokes": 9,
+       "radical": "日",
+       "structure": "上下结构"
+      },
+      {
+       "char": "材",
+       "pinyin": "Cái",
+       "strokes": 7,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "膝",
+       "pinyin": "Xī",
+       "strokes": 15,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "眠",
+       "pinyin": "Mián",
+       "strokes": 10,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "库",
+       "pinyin": "Kù",
+       "strokes": 7,
+       "radical": "广",
+       "structure": "半包围结构"
+      }
+     ]
+    },
+    {
+     "no": 21,
+     "type": null,
+     "chars": [
+      {
+       "char": "妙",
+       "pinyin": "Miào",
+       "strokes": 7,
+       "radical": "女",
+       "structure": "左右结构"
+      },
+      {
+       "char": "奏",
+       "pinyin": "Zòu",
+       "strokes": 9,
+       "radical": "大",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "呢",
+       "pinyin": "Ne",
+       "strokes": 8,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "喃",
+       "pinyin": "Nán",
+       "strokes": 12,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "伟",
+       "pinyin": "Wěi",
+       "strokes": 6,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "击",
+       "pinyin": "Jī",
+       "strokes": 5,
+       "radical": "凵",
+       "structure": "独体结构"
+      },
+      {
+       "char": "汇",
+       "pinyin": "Huì",
+       "strokes": 5,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "喳",
+       "pinyin": "Zhā",
+       "strokes": 12,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "唧",
+       "pinyin": "Jī",
+       "strokes": 10,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "哩",
+       "pinyin": "Li",
+       "strokes": 10,
+       "radical": "口",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 22,
+     "type": null,
+     "chars": [
+      {
+       "char": "仅",
+       "pinyin": "Jìn",
+       "strokes": 4,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "麻",
+       "pinyin": "Má",
+       "strokes": 11,
+       "radical": "麻",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "旋",
+       "pinyin": "Xuán",
+       "strokes": 11,
+       "radical": "方",
+       "structure": "左右结构"
+      },
+      {
+       "char": "佩",
+       "pinyin": "Pèi",
+       "strokes": 8,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "姿",
+       "pinyin": "Zī",
+       "strokes": 9,
+       "radical": "女",
+       "structure": "上下结构"
+      },
+      {
+       "char": "态",
+       "pinyin": "Tài",
+       "strokes": 8,
+       "radical": "心",
+       "structure": "上下结构"
+      },
+      {
+       "char": "梨",
+       "pinyin": "Lí",
+       "strokes": 11,
+       "radical": "木",
+       "structure": "上下结构"
+      },
+      {
+       "char": "笋",
+       "pinyin": "Sǔn",
+       "strokes": 10,
+       "radical": "竹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "寸",
+       "pinyin": "Cùn",
+       "strokes": 3,
+       "radical": "寸",
+       "structure": "独体结构"
+      },
+      {
+       "char": "副",
+       "pinyin": "Fù",
+       "strokes": 11,
+       "radical": "刂",
+       "structure": "左右结构"
+      },
+      {
+       "char": "爽",
+       "pinyin": "Shuāng",
+       "strokes": 11,
+       "radical": "爻",
+       "structure": "独体结构"
+      }
+     ]
+    },
+    {
+     "no": 23,
+     "type": null,
+     "chars": [
+      {
+       "char": "黎",
+       "pinyin": "Lí",
+       "strokes": 15,
+       "radical": "黍",
+       "structure": "上下结构"
+      },
+      {
+       "char": "凝",
+       "pinyin": "Níng",
+       "strokes": 16,
+       "radical": "冫",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "畅",
+       "pinyin": "Chàng",
+       "strokes": 8,
+       "radical": "田",
+       "structure": "左右结构"
+      },
+      {
+       "char": "瞬",
+       "pinyin": "Shùn",
+       "strokes": 17,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "猎",
+       "pinyin": "Liè",
+       "strokes": 11,
+       "radical": "犭",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 24,
+     "type": null,
+     "chars": [
+      {
+       "char": "司",
+       "pinyin": "Sī",
+       "strokes": 5,
+       "radical": "口",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "跌",
+       "pinyin": "Diē",
+       "strokes": 12,
+       "radical": "足",
+       "structure": "左右结构"
+      },
+      {
+       "char": "皆",
+       "pinyin": "Jiē",
+       "strokes": 9,
+       "radical": "白",
+       "structure": "上下结构"
+      },
+      {
+       "char": "弃",
+       "pinyin": "Qì",
+       "strokes": 7,
+       "radical": "廾",
+       "structure": "上下结构"
+      },
+      {
+       "char": "持",
+       "pinyin": "Chí",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 25,
+     "type": null,
+     "chars": [
+      {
+       "char": "宁",
+       "pinyin": "Níng",
+       "strokes": 5,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "胸",
+       "pinyin": "Xiōng",
+       "strokes": 10,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "脯",
+       "pinyin": "Fǔ",
+       "strokes": 11,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "惹",
+       "pinyin": "Rě",
+       "strokes": 12,
+       "radical": "心",
+       "structure": "上中下结构"
+      },
+      {
+       "char": "仰",
+       "pinyin": "Yǎng",
+       "strokes": 6,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "渣",
+       "pinyin": "Zhā",
+       "strokes": 12,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "或",
+       "pinyin": "Huò",
+       "strokes": 8,
+       "radical": "戈",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "者",
+       "pinyin": "Zhě",
+       "strokes": 8,
+       "radical": "耂",
+       "structure": "上下结构"
+      },
+      {
+       "char": "惜",
+       "pinyin": "Xī",
+       "strokes": 11,
+       "radical": "忄",
+       "structure": "左右结构"
+      },
+      {
+       "char": "诚",
+       "pinyin": "Chéng",
+       "strokes": 8,
+       "radical": "讠",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 26,
+     "type": null,
+     "chars": [
+      {
+       "char": "斗",
+       "pinyin": "Dòu",
+       "strokes": 4,
+       "radical": "斗",
+       "structure": "独体结构"
+      },
+      {
+       "char": "棒",
+       "pinyin": "Bàng",
+       "strokes": 12,
+       "radical": "",
+       "structure": ""
+      },
+      {
+       "char": "恩",
+       "pinyin": "Ēn",
+       "strokes": 10,
+       "radical": "心",
+       "structure": "上下结构"
+      },
+      {
+       "char": "大",
+       "pinyin": "Dà",
+       "strokes": 3,
+       "radical": "大",
+       "structure": "独体结构"
+      },
+      {
+       "char": "撤",
+       "pinyin": "Chè",
+       "strokes": 15,
+       "radical": "扌",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "险",
+       "pinyin": "Xiǎn",
+       "strokes": 9,
+       "radical": "阝",
+       "structure": "左右结构"
+      },
+      {
+       "char": "瓦",
+       "pinyin": "Wà",
+       "strokes": 4,
+       "radical": "瓦",
+       "structure": "独体结构"
+      },
+      {
+       "char": "帘",
+       "pinyin": "Lián",
+       "strokes": 8,
+       "radical": "巾",
+       "structure": "上下结构"
+      },
+      {
+       "char": "迅",
+       "pinyin": "Xùn",
+       "strokes": 6,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "速",
+       "pinyin": "Sù",
+       "strokes": 10,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "夺",
+       "pinyin": "Duó",
+       "strokes": 6,
+       "radical": "大",
+       "structure": "上下结构"
+      },
+      {
+       "char": "秒",
+       "pinyin": "Miǎo",
+       "strokes": 9,
+       "radical": "禾",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 27,
+     "type": null,
+     "chars": [
+      {
+       "char": "陈",
+       "pinyin": "Chén",
+       "strokes": 7,
+       "radical": "阝",
+       "structure": "左右结构"
+      },
+      {
+       "char": "曼",
+       "pinyin": "Màn",
+       "strokes": 11,
+       "radical": "曰",
+       "structure": "上中下结构"
+      },
+      {
+       "char": "联",
+       "pinyin": "Lián",
+       "strokes": 12,
+       "radical": "耳",
+       "structure": "左右结构"
+      },
+      {
+       "char": "缸",
+       "pinyin": "Gāng",
+       "strokes": 9,
+       "radical": "缶",
+       "structure": "左右结构"
+      },
+      {
+       "char": "还",
+       "pinyin": "Hái",
+       "strokes": 7,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "粱",
+       "pinyin": "Liáng",
+       "strokes": 13,
+       "radical": "米",
+       "structure": "上下结构"
+      },
+      {
+       "char": "顿",
+       "pinyin": "Dùn",
+       "strokes": 10,
+       "radical": "页",
+       "structure": "左右结构"
+      },
+      {
+       "char": "侦",
+       "pinyin": "Zhēn",
+       "strokes": 8,
+       "radical": "亻",
+       "structure": "左右结构"
+      }
+     ]
+    }
+   ],
+   "gardens": [
+    {
+     "name": "",
+     "chars": [
+      {
+       "char": "申",
+       "pinyin": "Shēn",
+       "strokes": 5,
+       "radical": "田",
+       "structure": "独体结构"
+      },
+      {
+       "char": "介",
+       "pinyin": "Jiè",
+       "strokes": 4,
+       "radical": "人",
+       "structure": "上下结构"
+      },
+      {
+       "char": "绍",
+       "pinyin": "Shào",
+       "strokes": 8,
+       "radical": "纟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "宗",
+       "pinyin": "Zōng",
+       "strokes": 8,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "乙",
+       "pinyin": "Yǐ",
+       "strokes": 1,
+       "radical": "乙",
+       "structure": "独体结构"
+      },
+      {
+       "char": "召",
+       "pinyin": "Zhào",
+       "strokes": 5,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "孝",
+       "pinyin": "Xiào",
+       "strokes": 7,
+       "radical": "子",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "name": "",
+     "chars": [
+      {
+       "char": "轴",
+       "pinyin": "Zhóu",
+       "strokes": 9,
+       "radical": "车",
+       "structure": "左右结构"
+      },
+      {
+       "char": "基",
+       "pinyin": "Jī",
+       "strokes": 11,
+       "radical": "土",
+       "structure": "上下结构"
+      },
+      {
+       "char": "础",
+       "pinyin": "Chǔ",
+       "strokes": 10,
+       "radical": "石",
+       "structure": "左右结构"
+      },
+      {
+       "char": "阁",
+       "pinyin": "Gé",
+       "strokes": 9,
+       "radical": "门",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "佳",
+       "pinyin": "Jiā",
+       "strokes": 8,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "盲",
+       "pinyin": "Máng",
+       "strokes": 8,
+       "radical": "目",
+       "structure": "上下结构"
+      },
+      {
+       "char": "唐",
+       "pinyin": "Táng",
+       "strokes": 10,
+       "radical": "口",
+       "structure": "半包围结构"
+      }
+     ]
+    },
+    {
+     "name": "",
+     "chars": [
+      {
+       "char": "蝌",
+       "pinyin": "Kē",
+       "strokes": 15,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蚪",
+       "pinyin": "Dǒu",
+       "strokes": 10,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蛾",
+       "pinyin": "É",
+       "strokes": 13,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "鲤",
+       "pinyin": "Lǐ",
+       "strokes": 15,
+       "radical": "鱼",
+       "structure": "左右结构"
+      },
+      {
+       "char": "鲫",
+       "pinyin": "Jì",
+       "strokes": 15,
+       "radical": "鱼",
+       "structure": "左右结构"
+      },
+      {
+       "char": "鲨",
+       "pinyin": "Shā",
+       "strokes": 15,
+       "radical": "鱼",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "name": "",
+     "chars": [
+      {
+       "char": "眨",
+       "pinyin": "Zhǎ",
+       "strokes": 9,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "瞪",
+       "pinyin": "Dèng",
+       "strokes": 17,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "瞅",
+       "pinyin": "Chǒu",
+       "strokes": 14,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "眶",
+       "pinyin": "Kuàng",
+       "strokes": 11,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "睹",
+       "pinyin": "Dǔ",
+       "strokes": 13,
+       "radical": "目",
+       "structure": "左右结构"
+      }
+     ]
+    }
+   ]
+  },
+  "xiezi": {
+   "lessons": [
+    {
+     "no": 1,
+     "type": null,
+     "chars": [
+      {
+       "char": "晨",
+       "pinyin": "Chén",
+       "strokes": 11,
+       "radical": "日",
+       "structure": "上下结构"
+      },
+      {
+       "char": "绒",
+       "pinyin": "Róng",
+       "strokes": 9,
+       "radical": "纟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "球",
+       "pinyin": "Qiú",
+       "strokes": 11,
+       "radical": "王",
+       "structure": "左右结构"
+      },
+      {
+       "char": "汉",
+       "pinyin": "Hàn",
+       "strokes": 5,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "艳",
+       "pinyin": "Yàn",
+       "strokes": 10,
+       "radical": "色",
+       "structure": "左右结构"
+      },
+      {
+       "char": "服",
+       "pinyin": "Fú",
+       "strokes": 8,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "装",
+       "pinyin": "Zhuāng",
+       "strokes": 12,
+       "radical": "衣",
+       "structure": "上下结构"
+      },
+      {
+       "char": "扮",
+       "pinyin": "Bàn",
+       "strokes": 7,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "静",
+       "pinyin": "Jìng",
+       "strokes": 14,
+       "radical": "青",
+       "structure": "左右结构"
+      },
+      {
+       "char": "停",
+       "pinyin": "Tíng",
+       "strokes": 11,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "孔",
+       "pinyin": "Kǒng",
+       "strokes": 4,
+       "radical": "子",
+       "structure": "左右结构"
+      },
+      {
+       "char": "雀",
+       "pinyin": "Què",
+       "strokes": 11,
+       "radical": "隹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "粗",
+       "pinyin": "Cū",
+       "strokes": 11,
+       "radical": "米",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 2,
+     "type": null,
+     "chars": [
+      {
+       "char": "落",
+       "pinyin": "Luò",
+       "strokes": 12,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "荒",
+       "pinyin": "Huāng",
+       "strokes": 9,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "笛",
+       "pinyin": "Dí",
+       "strokes": 11,
+       "radical": "竹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "舞",
+       "pinyin": "Wǔ",
+       "strokes": 14,
+       "radical": "夕",
+       "structure": "上下结构"
+      },
+      {
+       "char": "狂",
+       "pinyin": "Kuáng",
+       "strokes": 7,
+       "radical": "犭",
+       "structure": "左右结构"
+      },
+      {
+       "char": "罚",
+       "pinyin": "Fá",
+       "strokes": 9,
+       "radical": "罒",
+       "structure": "上下结构"
+      },
+      {
+       "char": "假",
+       "pinyin": "Jiǎ",
+       "strokes": 11,
+       "radical": "亻",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "互",
+       "pinyin": "Hù",
+       "strokes": 4,
+       "radical": "二",
+       "structure": "独体结构"
+      },
+      {
+       "char": "所",
+       "pinyin": "Suǒ",
+       "strokes": 8,
+       "radical": "户",
+       "structure": "左右结构"
+      },
+      {
+       "char": "够",
+       "pinyin": "Gòu",
+       "strokes": 11,
+       "radical": "夕",
+       "structure": "左右结构"
+      },
+      {
+       "char": "猜",
+       "pinyin": "Cāi",
+       "strokes": 11,
+       "radical": "犭",
+       "structure": "左右结构"
+      },
+      {
+       "char": "扬",
+       "pinyin": "Yáng",
+       "strokes": 6,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "臂",
+       "pinyin": "Bì",
+       "strokes": 17,
+       "radical": "月",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "no": 4,
+     "type": null,
+     "chars": [
+      {
+       "char": "寒",
+       "pinyin": "Hán",
+       "strokes": 12,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "径",
+       "pinyin": "Jìng",
+       "strokes": 8,
+       "radical": "彳",
+       "structure": "左右结构"
+      },
+      {
+       "char": "斜",
+       "pinyin": "Xié",
+       "strokes": 11,
+       "radical": "斗",
+       "structure": "左右结构"
+      },
+      {
+       "char": "霜",
+       "pinyin": "Shuāng",
+       "strokes": 17,
+       "radical": "雨",
+       "structure": "上下结构"
+      },
+      {
+       "char": "赠",
+       "pinyin": "Zèng",
+       "strokes": 16,
+       "radical": "贝",
+       "structure": "左右结构"
+      },
+      {
+       "char": "盖",
+       "pinyin": "Gě",
+       "strokes": 11,
+       "radical": "皿",
+       "structure": "上下结构"
+      },
+      {
+       "char": "菊",
+       "pinyin": "Jú",
+       "strokes": 11,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "残",
+       "pinyin": "Cán",
+       "strokes": 9,
+       "radical": "歹",
+       "structure": "左右结构"
+      },
+      {
+       "char": "君",
+       "pinyin": "Jūn",
+       "strokes": 7,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "橙",
+       "pinyin": "Chéng",
+       "strokes": 16,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "送",
+       "pinyin": "Sòng",
+       "strokes": 9,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "挑",
+       "pinyin": "Tiǎo",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 5,
+     "type": null,
+     "chars": [
+      {
+       "char": "铺",
+       "pinyin": "Pù",
+       "strokes": 12,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "泥",
+       "pinyin": "Ní",
+       "strokes": 8,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "晶",
+       "pinyin": "Jīng",
+       "strokes": 12,
+       "radical": "日",
+       "structure": "品字结构"
+      },
+      {
+       "char": "院",
+       "pinyin": "Yuàn",
+       "strokes": 9,
+       "radical": "阝",
+       "structure": "左右结构"
+      },
+      {
+       "char": "墙",
+       "pinyin": "Qiáng",
+       "strokes": 14,
+       "radical": "土",
+       "structure": "左右结构"
+      },
+      {
+       "char": "印",
+       "pinyin": "Yìn",
+       "strokes": 5,
+       "radical": "卩",
+       "structure": "左右结构"
+      },
+      {
+       "char": "排",
+       "pinyin": "Pái",
+       "strokes": 11,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "列",
+       "pinyin": "Liè",
+       "strokes": 6,
+       "radical": "刂",
+       "structure": "左右结构"
+      },
+      {
+       "char": "规",
+       "pinyin": "Guī",
+       "strokes": 8,
+       "radical": "见",
+       "structure": "左右结构"
+      },
+      {
+       "char": "则",
+       "pinyin": "Zé",
+       "strokes": 6,
+       "radical": "刂",
+       "structure": "左右结构"
+      },
+      {
+       "char": "乱",
+       "pinyin": "Luàn",
+       "strokes": 7,
+       "radical": "乙",
+       "structure": "左右结构"
+      },
+      {
+       "char": "棕",
+       "pinyin": "Zōng",
+       "strokes": 12,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "迟",
+       "pinyin": "Chí",
+       "strokes": 7,
+       "radical": "辶",
+       "structure": "半包围结构"
+      }
+     ]
+    },
+    {
+     "no": 6,
+     "type": null,
+     "chars": [
+      {
+       "char": "盒",
+       "pinyin": "Hé",
+       "strokes": 11,
+       "radical": "皿",
+       "structure": "上下结构"
+      },
+      {
+       "char": "颜",
+       "pinyin": "Yán",
+       "strokes": 15,
+       "radical": "页",
+       "structure": "左右结构"
+      },
+      {
+       "char": "料",
+       "pinyin": "Liào",
+       "strokes": 10,
+       "radical": "斗",
+       "structure": "左右结构"
+      },
+      {
+       "char": "票",
+       "pinyin": "Piào",
+       "strokes": 11,
+       "radical": "示",
+       "structure": "上下结构"
+      },
+      {
+       "char": "争",
+       "pinyin": "Zhèng",
+       "strokes": 6,
+       "radical": "刀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "仙",
+       "pinyin": "Xiān",
+       "strokes": 5,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "闻",
+       "pinyin": "Wén",
+       "strokes": 9,
+       "radical": "门",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "勾",
+       "pinyin": "Gòu",
+       "strokes": 4,
+       "radical": "勹",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "紧",
+       "pinyin": "Jǐn",
+       "strokes": 10,
+       "radical": "糸",
+       "structure": "上下结构"
+      },
+      {
+       "char": "洞",
+       "pinyin": "Dòng",
+       "strokes": 9,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "油",
+       "pinyin": "Yóu",
+       "strokes": 8,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "曲",
+       "pinyin": "Qǔ",
+       "strokes": 6,
+       "radical": "曰",
+       "structure": "独体结构"
+      },
+      {
+       "char": "丰",
+       "pinyin": "Fēng",
+       "strokes": 4,
+       "radical": "丨",
+       "structure": "独体结构"
+      }
+     ]
+    },
+    {
+     "no": 8,
+     "type": null,
+     "chars": [
+      {
+       "char": "柴",
+       "pinyin": "Chái",
+       "strokes": 10,
+       "radical": "木",
+       "structure": "上下结构"
+      },
+      {
+       "char": "旧",
+       "pinyin": "Jiù",
+       "strokes": 5,
+       "radical": "日",
+       "structure": "左右结构"
+      },
+      {
+       "char": "裙",
+       "pinyin": "Qún",
+       "strokes": 12,
+       "radical": "衤",
+       "structure": "左右结构"
+      },
+      {
+       "char": "怜",
+       "pinyin": "Lián",
+       "strokes": 8,
+       "radical": "忄",
+       "structure": "左右结构"
+      },
+      {
+       "char": "饿",
+       "pinyin": "È",
+       "strokes": 10,
+       "radical": "饣",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蜡",
+       "pinyin": "Zhà",
+       "strokes": 14,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "烛",
+       "pinyin": "Zhú",
+       "strokes": 10,
+       "radical": "火",
+       "structure": "左右结构"
+      },
+      {
+       "char": "伸",
+       "pinyin": "Shēn",
+       "strokes": 7,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "忽",
+       "pinyin": "Hū",
+       "strokes": 8,
+       "radical": "心",
+       "structure": "上下结构"
+      },
+      {
+       "char": "板",
+       "pinyin": "Bǎn",
+       "strokes": 8,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "富",
+       "pinyin": "Fù",
+       "strokes": 12,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "颗",
+       "pinyin": "Kē",
+       "strokes": 14,
+       "radical": "页",
+       "structure": "左右结构"
+      },
+      {
+       "char": "奶",
+       "pinyin": "Nǎi",
+       "strokes": 5,
+       "radical": "女",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 10,
+     "type": null,
+     "chars": [
+      {
+       "char": "旅",
+       "pinyin": "Lǚ",
+       "strokes": 10,
+       "radical": "方",
+       "structure": "左右结构"
+      },
+      {
+       "char": "咱",
+       "pinyin": "Zán",
+       "strokes": 9,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "偷",
+       "pinyin": "Tōu",
+       "strokes": 11,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "救",
+       "pinyin": "Jiù",
+       "strokes": 11,
+       "radical": "攵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "命",
+       "pinyin": "Mìng",
+       "strokes": 8,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "拼",
+       "pinyin": "Pīn",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "扫",
+       "pinyin": "Sào",
+       "strokes": 6,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "胃",
+       "pinyin": "Wèi",
+       "strokes": 9,
+       "radical": "月",
+       "structure": "上下结构"
+      },
+      {
+       "char": "管",
+       "pinyin": "Guǎn",
+       "strokes": 14,
+       "radical": "竹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "乎",
+       "pinyin": "Hū",
+       "strokes": 5,
+       "radical": "丿",
+       "structure": "独体结构"
+      },
+      {
+       "char": "咬",
+       "pinyin": "Yǎo",
+       "strokes": 9,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "流",
+       "pinyin": "Liú",
+       "strokes": 10,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "泪",
+       "pinyin": "Lèi",
+       "strokes": 8,
+       "radical": "氵",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 12,
+     "type": null,
+     "chars": [
+      {
+       "char": "准",
+       "pinyin": "Zhǔn",
+       "strokes": 10,
+       "radical": "冫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "备",
+       "pinyin": "Bèi",
+       "strokes": 8,
+       "radical": "夂",
+       "structure": "上下结构"
+      },
+      {
+       "char": "等",
+       "pinyin": "Děng",
+       "strokes": 12,
+       "radical": "竹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "暴",
+       "pinyin": "Bào",
+       "strokes": 15,
+       "radical": "日",
+       "structure": "上下结构"
+      },
+      {
+       "char": "睡",
+       "pinyin": "Shuì",
+       "strokes": 13,
+       "radical": "目",
+       "structure": "左右结构"
+      },
+      {
+       "char": "壁",
+       "pinyin": "Bì",
+       "strokes": 16,
+       "radical": "土",
+       "structure": "上下结构"
+      },
+      {
+       "char": "砍",
+       "pinyin": "Kǎn",
+       "strokes": 9,
+       "radical": "石",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蜘",
+       "pinyin": "Zhī",
+       "strokes": 14,
+       "radical": "虫",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "蛛",
+       "pinyin": "Zhū",
+       "strokes": 12,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "漂",
+       "pinyin": "Piào",
+       "strokes": 14,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "撞",
+       "pinyin": "Zhuàng",
+       "strokes": 15,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "饱",
+       "pinyin": "Bǎo",
+       "strokes": 8,
+       "radical": "饣",
+       "structure": "左右结构"
+      },
+      {
+       "char": "晒",
+       "pinyin": "Shài",
+       "strokes": 10,
+       "radical": "日",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 15,
+     "type": null,
+     "chars": [
+      {
+       "char": "搭",
+       "pinyin": "Dā",
+       "strokes": 12,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "亲",
+       "pinyin": "Qīn",
+       "strokes": 9,
+       "radical": "亠",
+       "structure": "上下结构"
+      },
+      {
+       "char": "父",
+       "pinyin": "Fù",
+       "strokes": 4,
+       "radical": "父",
+       "structure": "独体结构"
+      },
+      {
+       "char": "啦",
+       "pinyin": "Lā",
+       "strokes": 11,
+       "radical": "口",
+       "structure": "左中右结构"
+      },
+      {
+       "char": "响",
+       "pinyin": "Xiǎng",
+       "strokes": 9,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "羽",
+       "pinyin": "Yǔ",
+       "strokes": 6,
+       "radical": "羽",
+       "structure": "左右结构"
+      },
+      {
+       "char": "翠",
+       "pinyin": "Cuì",
+       "strokes": 14,
+       "radical": "羽",
+       "structure": "上下结构"
+      },
+      {
+       "char": "嘴",
+       "pinyin": "Zuǐ",
+       "strokes": 16,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "悄",
+       "pinyin": "Qiāo",
+       "strokes": 10,
+       "radical": "忄",
+       "structure": "左右结构"
+      },
+      {
+       "char": "吞",
+       "pinyin": "Tūn",
+       "strokes": 7,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "哦",
+       "pinyin": "Ó",
+       "strokes": 10,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "捕",
+       "pinyin": "Bǔ",
+       "strokes": 10,
+       "radical": "扌",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 16,
+     "type": null,
+     "chars": [
+      {
+       "char": "蒲",
+       "pinyin": "Pú",
+       "strokes": 13,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "英",
+       "pinyin": "Yīng",
+       "strokes": 8,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "盛",
+       "pinyin": "Shèng",
+       "strokes": 11,
+       "radical": "皿",
+       "structure": "上下结构"
+      },
+      {
+       "char": "耍",
+       "pinyin": "Shuǎ",
+       "strokes": 9,
+       "radical": "而",
+       "structure": "上下结构"
+      },
+      {
+       "char": "喊",
+       "pinyin": "Hǎn",
+       "strokes": 12,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "欠",
+       "pinyin": "Qiàn",
+       "strokes": 4,
+       "radical": "欠",
+       "structure": "独体结构"
+      },
+      {
+       "char": "钓",
+       "pinyin": "Diào",
+       "strokes": 8,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "而",
+       "pinyin": "Ér",
+       "strokes": 6,
+       "radical": "而",
+       "structure": "独体结构"
+      },
+      {
+       "char": "察",
+       "pinyin": "Chá",
+       "strokes": 14,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "拢",
+       "pinyin": "Lǒng",
+       "strokes": 8,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "掌",
+       "pinyin": "Zhǎng",
+       "strokes": 12,
+       "radical": "手",
+       "structure": "上下结构"
+      },
+      {
+       "char": "趣",
+       "pinyin": "Qù",
+       "strokes": 15,
+       "radical": "走",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "喜",
+       "pinyin": "Xǐ",
+       "strokes": 12,
+       "radical": "口",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "no": 17,
+     "type": null,
+     "chars": [
+      {
+       "char": "断",
+       "pinyin": "Duàn",
+       "strokes": 11,
+       "radical": "斤",
+       "structure": "左右结构"
+      },
+      {
+       "char": "楚",
+       "pinyin": "Chǔ",
+       "strokes": 13,
+       "radical": "木",
+       "structure": "上下结构"
+      },
+      {
+       "char": "至",
+       "pinyin": "Zhì",
+       "strokes": 6,
+       "radical": "至",
+       "structure": "上下结构"
+      },
+      {
+       "char": "孤",
+       "pinyin": "Gū",
+       "strokes": 8,
+       "radical": "子",
+       "structure": "左右结构"
+      },
+      {
+       "char": "帆",
+       "pinyin": "Fān",
+       "strokes": 6,
+       "radical": "巾",
+       "structure": "左右结构"
+      },
+      {
+       "char": "饮",
+       "pinyin": "Yìn",
+       "strokes": 7,
+       "radical": "饣",
+       "structure": "左右结构"
+      },
+      {
+       "char": "初",
+       "pinyin": "Chū",
+       "strokes": 7,
+       "radical": "刀",
+       "structure": "左右结构"
+      },
+      {
+       "char": "镜",
+       "pinyin": "Jìng",
+       "strokes": 16,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "未",
+       "pinyin": "Wèi",
+       "strokes": 5,
+       "radical": "木",
+       "structure": "独体结构"
+      },
+      {
+       "char": "磨",
+       "pinyin": "Mó",
+       "strokes": 16,
+       "radical": "石",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "遥",
+       "pinyin": "Yáo",
+       "strokes": 13,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "银",
+       "pinyin": "Yín",
+       "strokes": 11,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "盘",
+       "pinyin": "Pán",
+       "strokes": 11,
+       "radical": "皿",
+       "structure": "上下结构"
+      }
+     ]
+    },
+    {
+     "no": 18,
+     "type": null,
+     "chars": [
+      {
+       "char": "优",
+       "pinyin": "Yōu",
+       "strokes": 6,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "淡",
+       "pinyin": "Dàn",
+       "strokes": 11,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "浅",
+       "pinyin": "Qiǎn",
+       "strokes": 8,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "错",
+       "pinyin": "Cuò",
+       "strokes": 13,
+       "radical": "钅",
+       "structure": "左右结构"
+      },
+      {
+       "char": "岩",
+       "pinyin": "Yán",
+       "strokes": 8,
+       "radical": "山",
+       "structure": "上下结构"
+      },
+      {
+       "char": "挺",
+       "pinyin": "Tǐng",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "刺",
+       "pinyin": "Cì",
+       "strokes": 8,
+       "radical": "",
+       "structure": ""
+      },
+      {
+       "char": "鼓",
+       "pinyin": "Gǔ",
+       "strokes": 13,
+       "radical": "鼓",
+       "structure": "左右结构"
+      },
+      {
+       "char": "数",
+       "pinyin": "Shù",
+       "strokes": 13,
+       "radical": "攵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "厚",
+       "pinyin": "Hòu",
+       "strokes": 9,
+       "radical": "厂",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "宝",
+       "pinyin": "Bǎo",
+       "strokes": 8,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "贵",
+       "pinyin": "Guì",
+       "strokes": 9,
+       "radical": "贝",
+       "structure": "上下结构"
+      },
+      {
+       "char": "业",
+       "pinyin": "Yè",
+       "strokes": 5,
+       "radical": "一",
+       "structure": "独体结构"
+      }
+     ]
+    },
+    {
+     "no": 19,
+     "type": null,
+     "chars": [
+      {
+       "char": "滨",
+       "pinyin": "Bīn",
+       "strokes": 13,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "灰",
+       "pinyin": "Huī",
+       "strokes": 6,
+       "radical": "火",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "飘",
+       "pinyin": "Piāo",
+       "strokes": 15,
+       "radical": "风",
+       "structure": "左右结构"
+      },
+      {
+       "char": "渔",
+       "pinyin": "Yú",
+       "strokes": 11,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "遍",
+       "pinyin": "Biàn",
+       "strokes": 12,
+       "radical": "辶",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "躺",
+       "pinyin": "Tǎng",
+       "strokes": 15,
+       "radical": "身",
+       "structure": "左右结构"
+      },
+      {
+       "char": "载",
+       "pinyin": "Zài",
+       "strokes": 10,
+       "radical": "车",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "靠",
+       "pinyin": "Kào",
+       "strokes": 15,
+       "radical": "非",
+       "structure": "上下结构"
+      },
+      {
+       "char": "亚",
+       "pinyin": "Yà",
+       "strokes": 6,
+       "radical": "二",
+       "structure": "独体结构"
+      },
+      {
+       "char": "夏",
+       "pinyin": "Xià",
+       "strokes": 10,
+       "radical": "夂",
+       "structure": "上下结构"
+      },
+      {
+       "char": "除",
+       "pinyin": "Chú",
+       "strokes": 9,
+       "radical": "阝",
+       "structure": "左右结构"
+      },
+      {
+       "char": "踩",
+       "pinyin": "Cǎi",
+       "strokes": 15,
+       "radical": "足",
+       "structure": "左右结构"
+      },
+      {
+       "char": "洁",
+       "pinyin": "Jié",
+       "strokes": 9,
+       "radical": "氵",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 20,
+     "type": null,
+     "chars": [
+      {
+       "char": "脑",
+       "pinyin": "Nǎo",
+       "strokes": 10,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "袋",
+       "pinyin": "Dài",
+       "strokes": 11,
+       "radical": "衣",
+       "structure": "上下结构"
+      },
+      {
+       "char": "严",
+       "pinyin": "Yán",
+       "strokes": 7,
+       "radical": "一",
+       "structure": "上下结构"
+      },
+      {
+       "char": "实",
+       "pinyin": "Shí",
+       "strokes": 8,
+       "radical": "宀",
+       "structure": "上下结构"
+      },
+      {
+       "char": "挡",
+       "pinyin": "Dàng",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "视",
+       "pinyin": "Shì",
+       "strokes": 8,
+       "radical": "见",
+       "structure": "左右结构"
+      },
+      {
+       "char": "线",
+       "pinyin": "Xiàn",
+       "strokes": 8,
+       "radical": "纟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "坛",
+       "pinyin": "Tán",
+       "strokes": 7,
+       "radical": "土",
+       "structure": "左右结构"
+      },
+      {
+       "char": "显",
+       "pinyin": "Xiǎn",
+       "strokes": 9,
+       "radical": "日",
+       "structure": "上下结构"
+      },
+      {
+       "char": "材",
+       "pinyin": "Cái",
+       "strokes": 7,
+       "radical": "木",
+       "structure": "左右结构"
+      },
+      {
+       "char": "软",
+       "pinyin": "Ruǎn",
+       "strokes": 8,
+       "radical": "车",
+       "structure": "左右结构"
+      },
+      {
+       "char": "刮",
+       "pinyin": "Guā",
+       "strokes": 8,
+       "radical": "刂",
+       "structure": "左右结构"
+      },
+      {
+       "char": "库",
+       "pinyin": "Kù",
+       "strokes": 7,
+       "radical": "广",
+       "structure": "半包围结构"
+      }
+     ]
+    },
+    {
+     "no": 21,
+     "type": null,
+     "chars": [
+      {
+       "char": "妙",
+       "pinyin": "Miào",
+       "strokes": 7,
+       "radical": "女",
+       "structure": "左右结构"
+      },
+      {
+       "char": "演",
+       "pinyin": "Yǎn",
+       "strokes": 14,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "奏",
+       "pinyin": "Zòu",
+       "strokes": 9,
+       "radical": "大",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "琴",
+       "pinyin": "Qín",
+       "strokes": 12,
+       "radical": "王",
+       "structure": "上下结构"
+      },
+      {
+       "char": "感",
+       "pinyin": "Gǎn",
+       "strokes": 13,
+       "radical": "心",
+       "structure": "上下结构"
+      },
+      {
+       "char": "受",
+       "pinyin": "Shòu",
+       "strokes": 8,
+       "radical": "又",
+       "structure": "上下结构"
+      },
+      {
+       "char": "激",
+       "pinyin": "Jī",
+       "strokes": 16,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "击",
+       "pinyin": "Jī",
+       "strokes": 5,
+       "radical": "凵",
+       "structure": "独体结构"
+      },
+      {
+       "char": "器",
+       "pinyin": "Qì",
+       "strokes": 16,
+       "radical": "口",
+       "structure": "上下结构"
+      },
+      {
+       "char": "滴",
+       "pinyin": "Dī",
+       "strokes": 14,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "敲",
+       "pinyin": "Qiāo",
+       "strokes": 14,
+       "radical": "攴",
+       "structure": "左右结构"
+      },
+      {
+       "char": "鸣",
+       "pinyin": "Míng",
+       "strokes": 8,
+       "radical": "鸟",
+       "structure": "左右结构"
+      },
+      {
+       "char": "诉",
+       "pinyin": "Sù",
+       "strokes": 7,
+       "radical": "讠",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 22,
+     "type": null,
+     "chars": [
+      {
+       "char": "读",
+       "pinyin": "Dú",
+       "strokes": 10,
+       "radical": "讠",
+       "structure": "左右结构"
+      },
+      {
+       "char": "虾",
+       "pinyin": "Xiā",
+       "strokes": 9,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "麻",
+       "pinyin": "Má",
+       "strokes": 11,
+       "radical": "麻",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "勇",
+       "pinyin": "Yǒng",
+       "strokes": 9,
+       "radical": "力",
+       "structure": "上下结构"
+      },
+      {
+       "char": "蚂",
+       "pinyin": "Mà",
+       "strokes": 9,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "蚁",
+       "pinyin": "Yǐ",
+       "strokes": 9,
+       "radical": "虫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "短",
+       "pinyin": "Duǎn",
+       "strokes": 12,
+       "radical": "矢",
+       "structure": "左右结构"
+      },
+      {
+       "char": "栽",
+       "pinyin": "Zāi",
+       "strokes": 10,
+       "radical": "木",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "梨",
+       "pinyin": "Lí",
+       "strokes": 11,
+       "radical": "木",
+       "structure": "上下结构"
+      },
+      {
+       "char": "寸",
+       "pinyin": "Cùn",
+       "strokes": 3,
+       "radical": "寸",
+       "structure": "独体结构"
+      },
+      {
+       "char": "柔",
+       "pinyin": "Róu",
+       "strokes": 9,
+       "radical": "木",
+       "structure": "上下结构"
+      },
+      {
+       "char": "摇",
+       "pinyin": "Yáo",
+       "strokes": 13,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "册",
+       "pinyin": "Cè",
+       "strokes": 5,
+       "radical": "丿",
+       "structure": "独体结构"
+      }
+     ]
+    },
+    {
+     "no": 23,
+     "type": null,
+     "chars": [
+      {
+       "char": "朝",
+       "pinyin": "Cháo",
+       "strokes": 12,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "雾",
+       "pinyin": "Wù",
+       "strokes": 13,
+       "radical": "雨",
+       "structure": "上下结构"
+      },
+      {
+       "char": "蒙",
+       "pinyin": "Méng",
+       "strokes": 13,
+       "radical": "艹",
+       "structure": "上下结构"
+      },
+      {
+       "char": "鼻",
+       "pinyin": "Bí",
+       "strokes": 14,
+       "radical": "鼻",
+       "structure": "上中下结构"
+      },
+      {
+       "char": "总",
+       "pinyin": "Zǒng",
+       "strokes": 9,
+       "radical": "心",
+       "structure": "上下结构"
+      },
+      {
+       "char": "抖",
+       "pinyin": "Dǒu",
+       "strokes": 7,
+       "radical": "扌",
+       "structure": "左右结构"
+      },
+      {
+       "char": "露",
+       "pinyin": "Lù",
+       "strokes": 21,
+       "radical": "雨",
+       "structure": "上下结构"
+      },
+      {
+       "char": "湿",
+       "pinyin": "Shī",
+       "strokes": 12,
+       "radical": "氵",
+       "structure": "左右结构"
+      },
+      {
+       "char": "吸",
+       "pinyin": "Xī",
+       "strokes": 6,
+       "radical": "口",
+       "structure": "左右结构"
+      },
+      {
+       "char": "猎",
+       "pinyin": "Liè",
+       "strokes": 11,
+       "radical": "犭",
+       "structure": "左右结构"
+      },
+      {
+       "char": "翅",
+       "pinyin": "Chì",
+       "strokes": 10,
+       "radical": "羽",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "膀",
+       "pinyin": "Bǎng",
+       "strokes": 14,
+       "radical": "月",
+       "structure": "左右结构"
+      },
+      {
+       "char": "重",
+       "pinyin": "Zhòng",
+       "strokes": 9,
+       "radical": "里",
+       "structure": "独体结构"
+      }
+     ]
+    },
+    {
+     "no": 24,
+     "type": null,
+     "chars": [
+      {
+       "char": "司",
+       "pinyin": "Sī",
+       "strokes": 5,
+       "radical": "口",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "庭",
+       "pinyin": "Tíng",
+       "strokes": 9,
+       "radical": "广",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "登",
+       "pinyin": "Dēng",
+       "strokes": 12,
+       "radical": "癶",
+       "structure": "上下结构"
+      },
+      {
+       "char": "跌",
+       "pinyin": "Diē",
+       "strokes": 12,
+       "radical": "足",
+       "structure": "左右结构"
+      },
+      {
+       "char": "众",
+       "pinyin": "Zhòng",
+       "strokes": 6,
+       "radical": "人",
+       "structure": "品字结构"
+      },
+      {
+       "char": "弃",
+       "pinyin": "Qì",
+       "strokes": 7,
+       "radical": "廾",
+       "structure": "上下结构"
+      },
+      {
+       "char": "持",
+       "pinyin": "Chí",
+       "strokes": 9,
+       "radical": "扌",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 25,
+     "type": null,
+     "chars": [
+      {
+       "char": "郊",
+       "pinyin": "Jiāo",
+       "strokes": 8,
+       "radical": "阝",
+       "structure": "左右结构"
+      },
+      {
+       "char": "养",
+       "pinyin": "Yǎng",
+       "strokes": 9,
+       "radical": "丷",
+       "structure": "上下结构"
+      },
+      {
+       "char": "粉",
+       "pinyin": "Fěn",
+       "strokes": 10,
+       "radical": "米",
+       "structure": "左右结构"
+      },
+      {
+       "char": "谷",
+       "pinyin": "Gǔ",
+       "strokes": 7,
+       "radical": "谷",
+       "structure": "上下结构"
+      },
+      {
+       "char": "粒",
+       "pinyin": "Lì",
+       "strokes": 11,
+       "radical": "米",
+       "structure": "左右结构"
+      },
+      {
+       "char": "男",
+       "pinyin": "Nán",
+       "strokes": 7,
+       "radical": "田",
+       "structure": "上下结构"
+      },
+      {
+       "char": "或",
+       "pinyin": "Huò",
+       "strokes": 8,
+       "radical": "戈",
+       "structure": "半包围结构"
+      },
+      {
+       "char": "者",
+       "pinyin": "Zhě",
+       "strokes": 8,
+       "radical": "耂",
+       "structure": "上下结构"
+      },
+      {
+       "char": "冻",
+       "pinyin": "Dòng",
+       "strokes": 7,
+       "radical": "冫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "冷",
+       "pinyin": "Lěng",
+       "strokes": 7,
+       "radical": "冫",
+       "structure": "左右结构"
+      },
+      {
+       "char": "惜",
+       "pinyin": "Xī",
+       "strokes": 11,
+       "radical": "忄",
+       "structure": "左右结构"
+      },
+      {
+       "char": "肯",
+       "pinyin": "Kěn",
+       "strokes": 8,
+       "radical": "月",
+       "structure": "上下结构"
+      },
+      {
+       "char": "诚",
+       "pinyin": "Chéng",
+       "strokes": 8,
+       "radical": "讠",
+       "structure": "左右结构"
+      }
+     ]
+    },
+    {
+     "no": 26,
+     "type": null,
+     "chars": [
+      {
+       "char": "术",
+       "pinyin": "Shù",
+       "strokes": 5,
+       "radical": "木",
+       "structure": "独体结构"
+      },
+      {
+       "char": "斗",
+       "pinyin": "Dòu",
+       "strokes": 4,
+       "radical": "斗",
+       "structure": "独体结构"
+      },
+      {
+       "char": "焰",
+       "pinyin": "Yàn",
+       "strokes": 12,
+       "radical": "火",
+       "structure": "左右结构"
+      },
+      {
+       "char": "刚",
+       "pinyin": "Gāng",
+       "strokes": 6,
+       "radical": "刂",
+       "structure": "左右结构"
+      },
+      {
+       "char": "烈",
+       "pinyin": "Liè",
+       "strokes": 10,
+       "radical": "灬",
+       "structure": "上下结构"
+      },
+      {
+       "char": "离",
+       "pinyin": "Lí",
+       "strokes": 10,
+       "radical": "忄",
+       "structure": "上下结构"
+      },
+      {
+       "char": "血",
+       "pinyin": "Xiě",
+       "strokes": 6,
+       "radical": "血",
+       "structure": "独体结构"
+      },
+      {
+       "char": "仍",
+       "pinyin": "Réng",
+       "strokes": 4,
+       "radical": "亻",
+       "structure": "左右结构"
+      },
+      {
+       "char": "取",
+       "pinyin": "Qǔ",
+       "strokes": 8,
+       "radical": "又",
+       "structure": "左右结构"
+      },
+      {
+       "char": "匆",
+       "pinyin": "Cōng",
+       "strokes": 5,
+       "radical": "勹",
+       "structure": "独体结构"
+      },
+      {
+       "char": "险",
+       "pinyin": "Xiǎn",
+       "strokes": 9,
+       "radical": "阝",
+       "structure": "左右结构"
+      }
+     ]
+    }
+   ],
+   "gardens": []
+  }
+ }
+}

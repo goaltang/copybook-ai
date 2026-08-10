@@ -1,0 +1,222 @@
+[
+ {
+  "page": "009",
+  "title": "我爱我们的祖国",
+  "unit": false
+ },
+ {
+  "page": "011",
+  "title": "我是小学生",
+  "unit": false
+ },
+ {
+  "page": "012",
+  "title": "我爱学语文",
+  "unit": false
+ },
+ {
+  "page": "013",
+  "title": "第一单元・识字",
+  "unit": true
+ },
+ {
+  "page": "013",
+  "title": "1 天地人",
+  "unit": false
+ },
+ {
+  "page": "014",
+  "title": "2 金木水火土",
+  "unit": false
+ },
+ {
+  "page": "016",
+  "title": "3 口耳目手足",
+  "unit": false
+ },
+ {
+  "page": "018",
+  "title": "4 日月山川",
+  "unit": false
+ },
+ {
+  "page": "024",
+  "title": "快乐读书吧 读书真快乐",
+  "unit": false
+ },
+ {
+  "page": "025",
+  "title": "第二单元・汉语拼音",
+  "unit": true
+ },
+ {
+  "page": "025",
+  "title": "1  o e",
+  "unit": false
+ },
+ {
+  "page": "027",
+  "title": "2 i u ü",
+  "unit": false
+ },
+ {
+  "page": "029",
+  "title": "3 b p m f",
+  "unit": false
+ },
+ {
+  "page": "031",
+  "title": "4 d t n l",
+  "unit": false
+ },
+ {
+  "page": "037",
+  "title": "第三单元・汉语拼音",
+  "unit": true
+ },
+ {
+  "page": "037",
+  "title": "5 g k h",
+  "unit": false
+ },
+ {
+  "page": "039",
+  "title": "6 j q x",
+  "unit": false
+ },
+ {
+  "page": "041",
+  "title": "7 z c s",
+  "unit": false
+ },
+ {
+  "page": "043",
+  "title": "8 zh ch sh r",
+  "unit": false
+ },
+ {
+  "page": "045",
+  "title": "9 y w",
+  "unit": false
+ },
+ {
+  "page": "050",
+  "title": "第四单元・汉语拼音",
+  "unit": true
+ },
+ {
+  "page": "050",
+  "title": "10 i ei ui",
+  "unit": false
+ },
+ {
+  "page": "052",
+  "title": "11 o ou iu",
+  "unit": false
+ },
+ {
+  "page": "054",
+  "title": "12 ie üe er",
+  "unit": false
+ },
+ {
+  "page": "056",
+  "title": "13 n en in un ün",
+  "unit": false
+ },
+ {
+  "page": "059",
+  "title": "14 ng eng ing ong",
+  "unit": false
+ },
+ {
+  "page": "065",
+  "title": "第五单元・阅读",
+  "unit": true
+ },
+ {
+  "page": "065",
+  "title": "1 秋天",
+  "unit": false
+ },
+ {
+  "page": "067",
+  "title": "2 江南",
+  "unit": false
+ },
+ {
+  "page": "069",
+  "title": "3 雪地里的小画家",
+  "unit": false
+ },
+ {
+  "page": "071",
+  "title": "4 四季",
+  "unit": false
+ },
+ {
+  "page": "078",
+  "title": "第六单元・识字",
+  "unit": true
+ },
+ {
+  "page": "078",
+  "title": "5 对韵歌",
+  "unit": false
+ },
+ {
+  "page": "079",
+  "title": "6 日月明",
+  "unit": false
+ },
+ {
+  "page": "081",
+  "title": "7 小书包",
+  "unit": false
+ },
+ {
+  "page": "083",
+  "title": "8 升国旗",
+  "unit": false
+ },
+ {
+  "page": "089",
+  "title": "第七单元・阅读",
+  "unit": true
+ },
+ {
+  "page": "089",
+  "title": "5 小小的船",
+  "unit": false
+ },
+ {
+  "page": "091",
+  "title": "6 影子",
+  "unit": false
+ },
+ {
+  "page": "093",
+  "title": "7 两件宝",
+  "unit": false
+ },
+ {
+  "page": "100",
+  "title": "第八单元・阅读",
+  "unit": true
+ },
+ {
+  "page": "100",
+  "title": "8 比尾巴",
+  "unit": false
+ },
+ {
+  "page": "102",
+  "title": "9 乌鸦喝水",
+  "unit": false
+ },
+ {
+  "page": "104",
+  "title": "10 雨点儿",
+  "unit": false
+ }
+]
