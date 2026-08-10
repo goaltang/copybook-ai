@@ -1,0 +1,18 @@
+# 依赖与构建
+node_modules/
+dist/
+*.tsbuildinfo
+
+# 生成物
+engine/out/
+*.pdf
+
+# 原始教材 PDF(160MB+,从 TapXWorld/ChinaTextbook 获取,不入库)
+data/pdfs/
+
+# 任务规格(过程产物)
+TASK.md
+
+# 系统文件
+.DS_Store
+Thumbs.db
