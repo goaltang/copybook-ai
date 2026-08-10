@@ -63,5 +63,14 @@
 ## 后续工作
 - [ ] 2024 新版 1-3 年级数据(共6册)
 - [x] 组词数据接入(CC-CEDICT, CC BY-SA 4.0) → words.json
-- [ ] 笔顺数据接入(hanzi-writer-data MIT)
+- [x] 笔顺数据接入(hanzi-writer-data MIT + cnchar-order) → strokes.json
 - [ ] 多音字读音按课文语境标注(先用 cnchar 默认读音)
+
+## 笔顺数据 (strokes.json, P2)
+- 来源: hanzi-writer-data (MIT, https://github.com/chanind/hanzi-writer-data) + cnchar 3.2.6 cnchar-order (MIT)
+- 结构: `data/final/strokes.json` → `{ "strokes": { "天": {"names": ["横","横","撇","捺"], "paths": [每笔SVG], "medians": [每笔折线]} } }`
+- names: 按书写顺序的笔画名称; paths/medians: hanzi-writer 矢量笔顺(可做动态笔顺演示)
+- 覆盖: 2980 个唯一字 100% 有笔画名与矢量路径, 笔画数与生字表字段 0 不一致
+- 构建: `python3 data/build-strokes.py <cnchar-orders.json> <hanzi-writer-data目录>`
+  - cnchar-orders 导出: `node -e "const c=require('cnchar');c.use(require('cnchar-order'));require('fs').writeFileSync('orders.json',JSON.stringify(c.order.dict.orders))"`
+- 校验: `cd engine && npx tsx ../scripts/check-strokes.ts` (目标覆盖率 >95%)
