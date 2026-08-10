@@ -149,7 +149,7 @@ export async function llmParse(input: string): Promise<ParseResult | null> {
 ${BOOK_NAMES}
 
 JSON 字段说明:
-- book: 上表 12 个文件名之一
+- book: 上表 12 个文件名之一; 用户没有提到年级/册别时(如"第8课""默写第X课词语""作业"), 默认 "y一年级上册"
 - table: 写字表为 "xiezi"(默认), 只有用户明确说"认字/识字/会认字"时才为 "shizi"
 - no: 课号 1-40 的整数; 用户没说课号时用 null
 - type: "课文" | "识字" | "拼音" | null(用户明确提到才填)
