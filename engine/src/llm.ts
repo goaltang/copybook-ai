@@ -28,14 +28,14 @@ const BOOKS = [
 const BOOK_NAMES = BOOKS.join('\n');
 
 interface LlmJson {
-  book?: string;
+  book?: string | undefined;
   table?: string;
   no?: unknown;
   type?: string | null;
   all?: unknown;
   grid?: string;
-  showPinyin?: unknown;
-  showStrokeCount?: unknown;
+  showPinyin?: boolean | undefined;
+  showStrokeCount?: boolean | undefined;
   title?: string | null;
   error?: string | null;
 }
@@ -96,13 +96,13 @@ function toParseResult(j: LlmJson): ParseResult | null {
     console.log(`LLM: book 校验失败: ${j.book}`);
     return null;
   }
-  if (j.no !== null && (!Number.isInteger(j.no) || j.no < 1 || j.no > 40)) {
+  if (j.no !== null && (typeof j.no !== 'number' || !Number.isInteger(j.no) || j.no < 1 || j.no > 40)) {
     console.log(`LLM: 课号校验失败: ${j.no}`);
     return null;
   }
   const lf: { no?: number; type?: '课文' | '识字' | '拼音' } = {};
-  if (j.no !== null) lf.no = j.no;
-  if (j.type !== null) lf.type = j.type;
+  if (typeof j.no === 'number') lf.no = j.no;
+  if (j.type !== null) lf.type = j.type as '课文' | '识字' | '拼音';
   const result: ParseResult = {
     book: j.book,
     table: j.table as 'xiezi' | 'shizi',

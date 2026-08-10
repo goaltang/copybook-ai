@@ -19,5 +19,9 @@
     "typescript": "^7.0.2",
     "undici": "^8.10.0",
     "zod": "^4.4.3"
-  }
+  },
+  "devDependencies": {
+    "@typescript/typescript-linux-x64": "^7.0.2"
+  },
+  "type": "module"
 }

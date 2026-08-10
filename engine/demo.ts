@@ -1,5 +1,5 @@
 // 示例: 用一年级上册课文1(秋天)写字表生成字帖 PDF
-import { generateCopybook, lessonChars } from './src/index';
+import { generateCopybook, lessonChars } from './src/index.js';
 import fs from 'node:fs';
 
 async function main() {
