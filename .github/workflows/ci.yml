@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: |
+            engine/package-lock.json
+            web/package-lock.json
+
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm ci
+
+      # engine 的 tsc --noEmit 在当前 tsconfig(verbatimModuleSyntax)下报 CommonJS 兼容错误,
+      # 故用 CLI 冒烟替代类型检查(规则解析离线, 无需 API key)
+      - name: Smoke test engine (离线规则解析)
+        working-directory: engine
+        run: npx tsx src/cli.ts "一年级上册第五课" --no-llm
+
+      - name: Install web dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Build web (vite)
+        working-directory: web
+        run: npm run build
+
+      # 注意: 不运行任何需要 API key 的步骤(LLM 解析不在 CI 中执行)
