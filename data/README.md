@@ -51,8 +51,17 @@
 2. 一上识字表 4 个跨课重复字确认无误
 3. 各册课号: 低年级(1-2)识字表内"课文/识字/拼音"块各自从1编号; 高年级(3-6)全书连续编号(课号=课文序号,识字块并入)
 
+## 组词数据 (words.json, P1)
+- 来源: CC-CEDICT (CC BY-SA 4.0, 带声调 UTF-8 版, https://www.mdbg.net/chinese/dictionary?page=cc-cedict)
+- 筛选: 仅简体字、长度 2-4 的常用词, 共 104251 条
+- 词频: wordfreq 3.1.1 (zh, Zipf 值) 排序, 专有名词(拼音首字母大写)降权, 2字词优先
+- 结构: `data/final/words.json` → `{ "words": { "天": [{"word","pinyin","zipf"}, ...] } }`, 每字最多 5 个开头组词 + 单字词兜底
+- 覆盖: 2980 个唯一字全部覆盖, 其中 2883 字 (96.74%) 有多字组词
+- 构建: `python3 data/build-words.py <cedict_ts.u8.gz>` (需 wordfreq/jieba)
+- 校验: `cd engine && npx tsx ../scripts/check-words.ts` (目标覆盖率 >90%, 单字词算覆盖)
+
 ## 后续工作
 - [ ] 2024 新版 1-3 年级数据(共6册)
-- [ ] 组词数据接入(CC-CEDICT, CC BY-SA 4.0)
+- [x] 组词数据接入(CC-CEDICT, CC BY-SA 4.0) → words.json
 - [ ] 笔顺数据接入(hanzi-writer-data MIT)
 - [ ] 多音字读音按课文语境标注(先用 cnchar 默认读音)
