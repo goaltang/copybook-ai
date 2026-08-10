@@ -1,6 +1,5 @@
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { generateText } from 'ai';
-import { fetch as undiciFetch, ProxyAgent } from 'undici';
 import type { ParseResult } from './parse.js';
 
 const API_BASE = 'https://opencode.ai/zen/go/v1';
@@ -122,6 +121,8 @@ export async function llmParse(input: string): Promise<ParseResult | null> {
     console.log('LLM: 未设置 OPENCODE_GO_API_KEY, 跳过 AI 解析');
     return null;
   }
+
+  const { fetch: undiciFetch, ProxyAgent } = await import('undici');
 
   const proxyFetch = (async (url: any, init?: any) => {
     const dispatcher = new ProxyAgent(PROXY_URL);
