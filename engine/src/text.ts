@@ -118,7 +118,7 @@ export function learnedCharSet(learnedBook: string): Set<string> {
 
 /** 练字选项/口语指令词(这些不是要练的字, 提取前剔除) */
 const STRIP_PATTERN =
-  /米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|带拼音|要拼音|不要笔画|不带笔画|不要笔画数|带笔画|带笔画数|练字帖|帮我|请生成|生成|打印|制作|一份|一个|字帖/g;
+  /米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|带拼音|要拼音|不要笔画|不带笔画|不要笔画数|带笔画|带笔画数|带组词|要组词|组词|带笔顺|要笔顺|笔顺|练字帖|帮我|请生成|生成|打印|制作|一份|一个|字帖/g;
 
 export interface TextCharsResult {
   chars: CharSpec[];

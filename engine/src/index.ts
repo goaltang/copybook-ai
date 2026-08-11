@@ -5,6 +5,7 @@
 import { PDFDocument, rgb, PDFFont, PDFPage } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
 import fs from 'node:fs';
+import { type StrokeData, strokeBBox, glyphTransform, drawStrokePath, medianMid, dataToPage } from './strokes.js';
 
 export interface CharSpec {
   char: string;
@@ -25,6 +26,8 @@ export interface CopybookParams {
   showPinyin?: boolean;           // 格内显示拼音(格子上方)
   showStrokeCount?: boolean;      // 格子角落显示笔画数
   showWords?: boolean;            // 格下方显示组词(需 chars 带 words 字段)
+  showStrokes?: boolean;          // 附加笔顺分解页(需传入 strokes 数据)
+  strokes?: Map<string, StrokeData>;  // 笔顺数据(char → 笔画), 由调用方加载
   fontPath: string;               // 楷体 TTF 路径(汉字用)
   latinFontPath?: string;         // 拼音用字体(需含带声调拉丁字符), 默认同 fontPath
   pageSize?: { width: number; height: number }; // 默认 A4
@@ -49,7 +52,8 @@ function drawGrid(page: PDFPage, x: number, y: number, size: number, grid: GridT
 export async function generateCopybook(params: CopybookParams): Promise<Uint8Array> {
   const {
     title, chars, grid = 'tian', cellSize = 72, cols = 6, rowsPerPage = 8,
-    showPinyin = true, showStrokeCount = false, showWords = false, fontPath, latinFontPath,
+    showPinyin = true, showStrokeCount = false, showWords = false,
+    showStrokes = false, strokes, fontPath, latinFontPath,
     pageSize = A4,
   } = params;
   const WORD_ROW_H = 13; // 组词行高(pt)
@@ -128,6 +132,76 @@ export async function generateCopybook(params: CopybookParams): Promise<Uint8Arr
     }
 
     col++;
+  }
+
+  // 笔顺分解页(累加式: 第 k 格显示 1..k 笔, 第 k 笔加深并标序号)
+  if (showStrokes && strokes && strokes.size > 0) {
+    const MAIN = 52;          // 主字格大小
+    const GAP = 10;
+    const ROW_H = MAIN + 18;  // 每行高度(含笔顺条)
+    const rowsPerPage = Math.max(3, Math.floor((usableH - 40) / ROW_H));
+
+    let sp: PDFPage | null = null;
+    let sRow = 0, sCol = 0;
+    const strokeChars = chars.filter((c) => strokes.has(c.char));
+
+    function newStrokePage() {
+      sp = doc.addPage([pageSize.width, pageSize.height]);
+      sp.drawText('笔顺分解', {
+        x: margin, y: pageSize.height - margin - 24, size: 15, font, color: rgb(0.1, 0.1, 0.1),
+      });
+      sRow = 0; sCol = 0;
+    }
+
+    newStrokePage();
+    for (const c of strokeChars) {
+      const sd = strokes.get(c.char)!;
+      const n = sd.paths.length;
+      if (n === 0) continue;
+
+      if (sRow >= rowsPerPage) { newStrokePage(); }
+
+      const topY = pageSize.height - margin - 40 - sRow * ROW_H;
+      const mainX = margin;
+      const mainY = topY - MAIN;
+
+      // 主字格: 浅边框 + 汉字 + 拼音
+      sp!.drawRectangle({ x: mainX, y: mainY, width: MAIN, height: MAIN, borderColor: rgb(0.72, 0.72, 0.72), borderWidth: 1 });
+      const chSize = MAIN * 0.6;
+      const chW = font.widthOfTextAtSize(c.char, chSize);
+      sp!.drawText(c.char, { x: mainX + (MAIN - chW) / 2, y: mainY + MAIN * 0.15, size: chSize, font, color: rgb(0.1, 0.1, 0.1) });
+      if (c.pinyin) {
+        const pySize = 7;
+        const pyW = latinFont.widthOfTextAtSize(c.pinyin, pySize);
+        sp!.drawText(c.pinyin, { x: mainX + (MAIN - pyW) / 2, y: mainY + MAIN + 2, size: pySize, font: latinFont, color: rgb(0.4, 0.4, 0.4) });
+      }
+
+      // 笔顺分解条: 每格一笔(累加)
+      const gs = Math.min(26, Math.max(13, (pageSize.width - margin - mainX - MAIN - GAP - margin) / n));
+      const mids = medianMid(sd.medians);
+      for (let k = 0; k < n; k++) {
+        const gx = mainX + MAIN + GAP + k * (gs + 4);
+        const gy = mainY + (MAIN - gs) / 2;
+        sp!.drawRectangle({ x: gx, y: gy, width: gs, height: gs, borderColor: rgb(0.85, 0.85, 0.85), borderWidth: 0.6 });
+        const bbox = strokeBBox(sd.paths);
+        const t = glyphTransform(bbox, gx, gy, gs, 0.06);
+        // 1..k 笔浅灰, 第 k 笔加深
+        for (let j = 0; j <= k; j++) {
+          const isLast = j === k;
+          drawStrokePath(sp!, sd.paths[j]!, bbox, t, isLast ? rgb(0.15, 0.15, 0.15) : rgb(0.82, 0.82, 0.82), isLast ? 1.1 : 0.7);
+        }
+        // 序号: 放在第 k 笔 medians 中点
+        const mid = mids[k];
+        if (mid) {
+          const num = String(k + 1);
+          const numSize = Math.max(4, gs * 0.3);
+          const mp = dataToPage(mid, t, bbox);
+          const numW = latinFont.widthOfTextAtSize(num, numSize);
+          sp!.drawText(num, { x: mp.x - numW / 2, y: mp.y - numSize / 2, size: numSize, font: latinFont, color: rgb(0.8, 0.1, 0.1) });
+        }
+      }
+      sRow++;
+    }
   }
 
   return doc.save();

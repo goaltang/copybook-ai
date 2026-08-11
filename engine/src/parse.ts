@@ -12,7 +12,8 @@ export interface ParseResult {
   grid: 'tian' | 'mi' | 'plain';
   showPinyin: boolean;
   showStrokeCount: boolean;
-  showWords?: boolean;   // 带组词
+  showWords?: boolean;    // 带组词
+  showStrokes?: boolean;  // 带笔顺
   error?: string;
 }
 
@@ -54,6 +55,7 @@ export function parse(input: string): ParseResult {
     showPinyin: true,
     showStrokeCount: true,
     showWords: false,
+    showStrokes: false,
   };
 
   let remaining = raw;
@@ -110,8 +112,9 @@ export function parse(input: string): ParseResult {
       if (/不要拼音|无拼音|不带拼音/.test(raw)) textMode.showPinyin = false;
       if (/不要笔画|不带笔画|不要笔画数/.test(raw)) textMode.showStrokeCount = false;
       if (/带组词|要组词|组词/.test(raw)) textMode.showWords = true;
+      if (/带笔顺|要笔顺|笔顺/.test(raw)) textMode.showStrokes = true;
       const titleText = raw
-        .replace(/米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|不要笔画|不带笔画|不要笔画数/g, '')
+        .replace(/米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|不要笔画|不带笔画|不要笔画数|带组词|要组词|组词|带笔顺|要笔顺|笔顺/g, '')
         .replace(/\s+/g, '')
         .slice(0, 12);
       textMode.title = learnedBook
@@ -128,7 +131,7 @@ export function parse(input: string): ParseResult {
 
   // 已识别年级+册, 但内容不含课式指令且含汉字 → 未学字模式(如 "二年级下册 春眠不觉晓")
   const styleRemoved = remaining
-    .replace(/米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|不要笔画|不带笔画|不要笔画数/g, '')
+    .replace(/米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|不要笔画|不带笔画|不要笔画数|带组词|要组词|组词|带笔顺|要笔顺|笔顺/g, '')
     .replace(/\s+/g, '');
   if (
     !/课|课文|识字表|写字表|园地|单元|全册|全部|默写|识字/.test(remaining) &&
@@ -142,6 +145,7 @@ export function parse(input: string): ParseResult {
     if (/不要拼音|无拼音|不带拼音/.test(raw)) unlearned.showPinyin = false;
     if (/不要笔画|不带笔画|不要笔画数/.test(raw)) unlearned.showStrokeCount = false;
     if (/带组词|要组词|组词/.test(raw)) unlearned.showWords = true;
+    if (/带笔顺|要笔顺|笔顺/.test(raw)) unlearned.showStrokes = true;
     unlearned.title = `${bookLabel(result.book)}未学字 练字帖`;
     return unlearned;
   }
@@ -227,6 +231,7 @@ export function parse(input: string): ParseResult {
   else if (/带笔画|要笔画|带笔画数/.test(raw)) result.showStrokeCount = true;
 
   if (/带组词|要组词|组词/.test(raw)) result.showWords = true;
+  if (/带笔顺|要笔顺|笔顺/.test(raw)) result.showStrokes = true;
 
   const bookTitle = `${gradeNames[grade]}年级${term}册`;
   if (result.lessonFilter === 'ALL') {

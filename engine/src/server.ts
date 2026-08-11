@@ -5,6 +5,7 @@ import { parse, type ParseResult } from './parse.js';
 import { llmParse } from './llm.js';
 import { generateCopybook, type CharSpec } from './index.js';
 import { textToChars, unlearnedChars, attachWords } from './text.js';
+import { loadStrokeMap } from './strokes.js';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '../../data/final');
 const FONT_PATH = path.resolve(import.meta.dirname, '../fonts/LXGWWenKai-Regular.ttf');
@@ -252,6 +253,7 @@ async function handleCopybook(text: string, useLlm: boolean): Promise<{ status: 
     showPinyin: parsed.showPinyin,
     showStrokeCount: parsed.showStrokeCount,
     showWords: parsed.showWords === true,
+    ...(parsed.showStrokes === true ? { showStrokes: true, strokes: loadStrokeMap() } : {}),
     fontPath: FONT_PATH,
     latinFontPath: LATIN_FONT_PATH,
   });

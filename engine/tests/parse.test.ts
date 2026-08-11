@@ -125,6 +125,18 @@ describe('parse 规则解析器', () => {
     expect(r.showWords).toBe(true);
   });
 
+  it('带笔顺: "一年级上册第3课 带笔顺" → showStrokes=true', () => {
+    const r = parse('一年级上册第3课 带笔顺');
+    expect(r.error).toBeUndefined();
+    expect(r.showStrokes).toBe(true);
+  });
+
+  it('文本模式带笔顺: "春眠不觉晓 笔顺" → showStrokes=true', () => {
+    const r = parse('春眠不觉晓 笔顺');
+    expect(r.mode).toBe('text');
+    expect(r.showStrokes).toBe(true);
+  });
+
   it('含课式关键词仍走老路径: "今晚作业默写第8课词语" → 不进入文本模式', () => {
     const r = parse('今晚作业默写第8课词语');
     expect(r.mode).not.toBe('text');
