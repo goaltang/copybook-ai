@@ -91,6 +91,28 @@ describe('parse 规则解析器', () => {
     expect(r.showPinyin).toBe(false);
   });
 
+  it('未学字模式: "春眠不觉晓 二年级" → mode=unlearned, learnedBook=y二年级上册(默认上册)', () => {
+    const r = parse('春眠不觉晓 二年级');
+    expect(r.error).toBeUndefined();
+    expect(r.mode).toBe('unlearned');
+    expect(r.learnedBook).toBe('y二年级上册');
+    expect(r.title).toContain('未学字');
+  });
+
+  it('未学字模式(带册, 年级前置): "二年级下册 春眠不觉晓" → learnedBook=y二年级下册', () => {
+    const r = parse('二年级下册 春眠不觉晓');
+    expect(r.error).toBeUndefined();
+    expect(r.mode).toBe('unlearned');
+    expect(r.learnedBook).toBe('y二年级下册');
+  });
+
+  it('未学字模式 + 样式: "春眠不觉晓 三年级 米字格" → 米字格', () => {
+    const r = parse('春眠不觉晓 三年级 米字格');
+    expect(r.mode).toBe('unlearned');
+    expect(r.learnedBook).toBe('y三年级上册');
+    expect(r.grid).toBe('mi');
+  });
+
   it('含课式关键词仍走老路径: "今晚作业默写第8课词语" → 不进入文本模式', () => {
     const r = parse('今晚作业默写第8课词语');
     expect(r.mode).not.toBe('text');
@@ -121,4 +143,10 @@ describe('CLI --no-llm 路径(集成)', () => {
   it('无法识别的输入 + --no-llm → 报错退出(不调 LLM)', async () => {
     await expect(runCli(['abc!!!', '--no-llm'])).rejects.toThrow();
   }, 60_000);
+
+  it('文本+年级 + --no-llm → 未学字字帖生成成功', async () => {
+    const { stdout } = await runCli(['春眠不觉晓 二年级', '--no-llm']);
+    expect(stdout).toContain('未学字');
+    expect(stdout).toContain('生成成功');
+  }, 90_000);
 });

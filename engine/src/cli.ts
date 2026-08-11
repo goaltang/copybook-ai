@@ -1,7 +1,7 @@
 import { parse } from './parse.js';
 import { llmParse } from './llm.js';
 import { generateCopybook, type CharSpec } from './index.js';
-import { textToChars } from './text.js';
+import { textToChars, unlearnedChars } from './text.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -55,8 +55,18 @@ async function main() {
     process.exit(1);
   }
 
-  if (parsed.mode === 'text') {
-    const { chars, repeats, uncovered } = textToChars(parsed.text ?? '');
+  if (parsed.mode === 'text' || parsed.mode === 'unlearned') {
+    let chars;
+    let repeats;
+    let uncovered;
+    let learnedCount: number | undefined;
+    if (parsed.mode === 'unlearned' && parsed.learnedBook) {
+      const r = unlearnedChars(parsed.text ?? '', parsed.learnedBook);
+      chars = r.chars; repeats = r.repeats; uncovered = r.uncovered; learnedCount = r.learnedCount;
+    } else {
+      const r = textToChars(parsed.text ?? '');
+      chars = r.chars; repeats = r.repeats; uncovered = r.uncovered;
+    }
     if (chars.length === 0) {
       console.log('\n错误: 没有提取到要练的汉字');
       process.exit(1);
@@ -65,7 +75,10 @@ async function main() {
       .filter(([, n]) => (n as number) > 1)
       .map(([c, n]) => `${c}×${n}`)
       .join(' ');
-    console.log(`\n课信息: 文本练字 ${chars.length} 字${repeatDesc ? ` (重复: ${repeatDesc})` : ''}`);
+    const modeDesc = parsed.mode === 'unlearned'
+      ? `未学字 ${chars.length} 字 (已学集合 ${learnedCount} 字)`
+      : `文本练字 ${chars.length} 字`;
+    console.log(`\n课信息: ${modeDesc}${repeatDesc ? ` (重复: ${repeatDesc})` : ''}`);
     if (uncovered.length > 0) {
       console.log(`提示: ${uncovered.length} 字暂无拼音/笔画数据, 不显示拼音: ${uncovered.join('')}`);
     }

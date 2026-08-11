@@ -4,7 +4,7 @@ import path from 'node:path';
 import { parse, type ParseResult } from './parse.js';
 import { llmParse } from './llm.js';
 import { generateCopybook, type CharSpec } from './index.js';
-import { textToChars } from './text.js';
+import { textToChars, unlearnedChars } from './text.js';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '../../data/final');
 const FONT_PATH = path.resolve(import.meta.dirname, '../fonts/LXGWWenKai-Regular.ttf');
@@ -203,20 +203,32 @@ async function handleCopybook(text: string, useLlm: boolean): Promise<{ status: 
   }
 
   let resolved: ResolvedLessons;
-  if (parsed.mode === 'text') {
-    const { chars, repeats, uncovered } = textToChars(parsed.text ?? '');
+  if (parsed.mode === 'text' || parsed.mode === 'unlearned') {
+    let chars;
+    let repeats;
+    let uncovered;
+    let learnedCount: number | undefined;
+    if (parsed.mode === 'unlearned' && parsed.learnedBook) {
+      const r = unlearnedChars(parsed.text ?? '', parsed.learnedBook);
+      chars = r.chars; repeats = r.repeats; uncovered = r.uncovered; learnedCount = r.learnedCount;
+    } else {
+      const r = textToChars(parsed.text ?? '');
+      chars = r.chars; repeats = r.repeats; uncovered = r.uncovered;
+    }
     const repeatDesc = Object.entries(repeats)
       .filter(([, n]) => (n as number) > 1)
       .map(([c, n]) => `${c}×${n}`)
       .join(' ');
-    const desc = `${chars.length} 字${repeatDesc ? ` (重复: ${repeatDesc})` : ''}`;
+    const desc = parsed.mode === 'unlearned'
+      ? `未学字 ${chars.length} 字 (已学集合 ${learnedCount ?? 0} 字)${repeatDesc ? ` (重复: ${repeatDesc})` : ''}`
+      : `${chars.length} 字${repeatDesc ? ` (重复: ${repeatDesc})` : ''}`;
     if (uncovered.length > 0) {
-      console.log(`[${new Date().toISOString()}] 文本练字: ${uncovered.length} 字无拼音数据: ${uncovered.join('')}`);
+      console.log(`[${new Date().toISOString()}] ${parsed.mode}练字: ${uncovered.length} 字无拼音数据: ${uncovered.join('')}`);
     }
     if (chars.length === 0) {
       resolved = { chars, desc: '', error: '没有找到要生成的字' };
     } else {
-      resolved = { chars, desc: `文本练字 ${desc}` };
+      resolved = { chars, desc: parsed.mode === 'unlearned' ? desc : `文本练字 ${desc}` };
     }
   } else {
     resolved = resolveLessons(parsed);

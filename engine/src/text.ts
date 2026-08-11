@@ -45,6 +45,50 @@ function buildCharMap(): Map<string, CharInfo> {
   return charMap;
 }
 
+/** 12 册教材顺序(用于累计"已学字"集合) */
+const BOOK_ORDER = [
+  'y一年级上册', 'y一年级下册', 'y二年级上册', 'y二年级下册',
+  'y三年级上册', 'y三年级下册', 'y四年级上册', 'y四年级下册',
+  'y五年级上册', 'y五年级下册', 'y六年级上册', 'y六年级下册',
+] as const;
+
+let bookCharsCache: Map<string, Set<string>> | null = null;
+
+function buildBookChars(): Map<string, Set<string>> {
+  if (bookCharsCache) return bookCharsCache;
+  bookCharsCache = new Map();
+  for (const f of fs.readdirSync(DATA_DIR)) {
+    if (!/^y.*\.json$/.test(f)) continue;
+    const key = f.replace('.json', '');
+    const set = new Set<string>();
+    const book = JSON.parse(fs.readFileSync(path.join(DATA_DIR, f), 'utf-8'));
+    for (const table of Object.values(book.tables ?? {}) as any[]) {
+      for (const lesson of table.lessons ?? []) {
+        for (const c of lesson.chars ?? []) set.add(c.char);
+      }
+      for (const g of table.gardens ?? []) {
+        for (const c of g.chars ?? []) set.add(c.char);
+      }
+    }
+    bookCharsCache.set(key, set);
+  }
+  return bookCharsCache;
+}
+
+/** 截至 learnedBook(含该册) 的累计已学字集合 */
+export function learnedCharSet(learnedBook: string): Set<string> {
+  const books = buildBookChars();
+  const idx = BOOK_ORDER.indexOf(learnedBook as (typeof BOOK_ORDER)[number]);
+  const learned = new Set<string>();
+  if (idx >= 0) {
+    for (let i = 0; i <= idx; i++) {
+      const bk = BOOK_ORDER[i];
+      if (bk) for (const c of books.get(bk) ?? []) learned.add(c);
+    }
+  }
+  return learned;
+}
+
 /** 练字选项/口语指令词(这些不是要练的字, 提取前剔除) */
 const STRIP_PATTERN =
   /米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|带拼音|要拼音|不要笔画|不带笔画|不要笔画数|带笔画|带笔画数|练字帖|帮我|请生成|生成|打印|制作|一份|一个|字帖/g;
@@ -84,4 +128,22 @@ export function textToChars(text: string): TextCharsResult {
     }
   }
   return { chars, repeats, uncovered };
+}
+
+export interface UnlearnedCharsResult extends TextCharsResult {
+  /** 截至 learnedBook 的累计已学唯一字数 */
+  learnedCount: number;
+}
+
+/** 从未学集合的角度提取文本中的字: 只保留截至 learnedBook 还没学过的字 */
+export function unlearnedChars(text: string, learnedBook: string): UnlearnedCharsResult {
+  const { chars, repeats } = textToChars(text);
+  const learned = learnedCharSet(learnedBook);
+  const filtered = chars.filter((c) => !learned.has(c.char));
+  return {
+    chars: filtered,
+    repeats,
+    uncovered: filtered.filter((c) => !c.pinyin).map((c) => c.char),
+    learnedCount: learned.size,
+  };
 }

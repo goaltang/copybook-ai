@@ -3,7 +3,7 @@
  * 覆盖: 汉字提取 / 标点空白剔除 / 样式词剔除 / 去重保序 / 未覆盖字提示
  */
 import { describe, it, expect } from 'vitest';
-import { textToChars } from '../src/text.js';
+import { textToChars, unlearnedChars, learnedCharSet } from '../src/text.js';
 
 describe('textToChars 文本→字谱', () => {
   it('提取汉字, 剔除标点空白', () => {
@@ -41,5 +41,33 @@ describe('textToChars 文本→字谱', () => {
   it('空文本/无汉字 → 空结果', () => {
     const { chars } = textToChars('!!! 123 abc');
     expect(chars.length).toBe(0);
+  });
+});
+
+describe('unlearnedChars 未学字提取', () => {
+  it('一年级已学 → 春眠不觉晓中 眠/晓 未学, 春/不/觉 已学', () => {
+    const { chars } = unlearnedChars('春眠不觉晓', 'y一年级上册');
+    expect(chars.map((c) => c.char).sort()).toEqual(['晓', '眠']);
+  });
+
+  it('六年级 → 全部已学, 无未学字', () => {
+    const { chars } = unlearnedChars('春眠不觉晓', 'y六年级下册');
+    expect(chars.length).toBe(0);
+  });
+
+  it('教材外的字(龘)任何年级都算未学', () => {
+    const { chars, uncovered } = unlearnedChars('春龘', 'y六年级下册');
+    expect(chars.map((c) => c.char)).toEqual(['龘']);
+    expect(uncovered).toEqual(['龘']);
+  });
+
+  it('已学集合随进度单调增长', () => {
+    const s1 = learnedCharSet('y一年级上册').size;
+    const s2 = learnedCharSet('y一年级下册').size;
+    const s6 = learnedCharSet('y六年级下册').size;
+    expect(s1).toBeGreaterThan(0);
+    expect(s2).toBeGreaterThan(s1);
+    expect(s6).toBeGreaterThan(s2);
+    expect(s6).toBe(2980); // 12 册累计唯一字
   });
 });
