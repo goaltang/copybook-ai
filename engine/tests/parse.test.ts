@@ -43,10 +43,16 @@ describe('parse 规则解析器', () => {
     expect(r.lessonFilter).toEqual({ no: 1 });
   });
 
-  it('异常输入: "今天天气不错" → 返回 error', () => {
-    const r = parse('今天天气不错');
+  it('异常输入: "abc!!!" → 返回 error(无汉字且无册别)', () => {
+    const r = parse('abc!!!');
     expect(r.error).toContain('无法识别的指令');
     expect(r.book).toBeUndefined();
+  });
+
+  it('任意中文无课式关键词 → 文本模式(不再报错)', () => {
+    const r = parse('今天天气不错');
+    expect(r.error).toBeUndefined();
+    expect(r.mode).toBe('text');
   });
 
   it('空输入 → 返回 error(空)', () => {
@@ -68,6 +74,34 @@ describe('parse 规则解析器', () => {
     expect(r.showPinyin).toBe(false);
     expect(r.showStrokeCount).toBe(true);
   });
+
+  it('任意文本模式: "春眠不觉晓" → mode=text, 无错误', () => {
+    const r = parse('春眠不觉晓');
+    expect(r.error).toBeUndefined();
+    expect(r.mode).toBe('text');
+    expect(r.text).toBe('春眠不觉晓');
+    expect(r.title).toContain('练字帖');
+  });
+
+  it('任意文本模式 + 样式: "春眠不觉晓 米字格 不要拼音" → 米字格+无拼音', () => {
+    const r = parse('春眠不觉晓 米字格 不要拼音');
+    expect(r.error).toBeUndefined();
+    expect(r.mode).toBe('text');
+    expect(r.grid).toBe('mi');
+    expect(r.showPinyin).toBe(false);
+  });
+
+  it('含课式关键词仍走老路径: "今晚作业默写第8课词语" → 不进入文本模式', () => {
+    const r = parse('今晚作业默写第8课词语');
+    expect(r.mode).not.toBe('text');
+    expect(r.error).toBeDefined(); // 留给 LLM 兜底
+  });
+
+  it('纯英文/符号 → 报错(非文本模式)', () => {
+    const r = parse('hello world');
+    expect(r.mode).not.toBe('text');
+    expect(r.error).toBeDefined();
+  });
 });
 
 describe('CLI --no-llm 路径(集成)', () => {
@@ -85,6 +119,6 @@ describe('CLI --no-llm 路径(集成)', () => {
   }, 90_000);
 
   it('无法识别的输入 + --no-llm → 报错退出(不调 LLM)', async () => {
-    await expect(runCli(['今天天气不错', '--no-llm'])).rejects.toThrow();
+    await expect(runCli(['abc!!!', '--no-llm'])).rejects.toThrow();
   }, 60_000);
 });

@@ -4,9 +4,10 @@ import path from 'node:path';
 import { parse, type ParseResult } from './parse.js';
 import { llmParse } from './llm.js';
 import { generateCopybook, type CharSpec } from './index.js';
+import { textToChars } from './text.js';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '../../data/final');
-const FONT_PATH = path.resolve(import.meta.dirname, '../fonts/演示春风楷.ttf');
+const FONT_PATH = path.resolve(import.meta.dirname, '../fonts/LXGWWenKai-Regular.ttf');
 const LATIN_FONT_PATH = path.resolve(import.meta.dirname, '../fonts/DejaVuSans.ttf');
 const WEB_DIR = path.resolve(import.meta.dirname, '../../web/dist');
 
@@ -201,7 +202,25 @@ async function handleCopybook(text: string, useLlm: boolean): Promise<{ status: 
     return { status: 400, body: { ok: false, error: parsed.error } };
   }
 
-  const resolved = resolveLessons(parsed);
+  let resolved: ResolvedLessons;
+  if (parsed.mode === 'text') {
+    const { chars, repeats, uncovered } = textToChars(parsed.text ?? '');
+    const repeatDesc = Object.entries(repeats)
+      .filter(([, n]) => (n as number) > 1)
+      .map(([c, n]) => `${c}×${n}`)
+      .join(' ');
+    const desc = `${chars.length} 字${repeatDesc ? ` (重复: ${repeatDesc})` : ''}`;
+    if (uncovered.length > 0) {
+      console.log(`[${new Date().toISOString()}] 文本练字: ${uncovered.length} 字无拼音数据: ${uncovered.join('')}`);
+    }
+    if (chars.length === 0) {
+      resolved = { chars, desc: '', error: '没有找到要生成的字' };
+    } else {
+      resolved = { chars, desc: `文本练字 ${desc}` };
+    }
+  } else {
+    resolved = resolveLessons(parsed);
+  }
   if (resolved.error) {
     const elapsed = Date.now() - t0;
     console.log(`[${new Date().toISOString()}] text="${text}" source=${source} 耗时=${elapsed}ms -> 400: ${resolved.error}`);
@@ -233,6 +252,7 @@ async function handleCopybook(text: string, useLlm: boolean): Promise<{ status: 
       ok: true,
       source,
       parse: {
+        mode: parsed.mode ?? 'lesson',
         book: parsed.book,
         title: parsed.title,
         grid: parsed.grid,

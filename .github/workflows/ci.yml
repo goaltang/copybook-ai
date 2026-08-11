@@ -24,8 +24,14 @@ jobs:
         working-directory: engine
         run: npm ci
 
-      # engine 的 tsc --noEmit 在当前 tsconfig(verbatimModuleSyntax)下报 CommonJS 兼容错误,
-      # 故用 CLI 冒烟替代类型检查(规则解析离线, 无需 API key)
+      - name: Type check engine (tsc)
+        working-directory: engine
+        run: npx tsc --noEmit
+
+      - name: Unit tests engine (vitest)
+        working-directory: engine
+        run: npm test
+
       - name: Smoke test engine (离线规则解析)
         working-directory: engine
         run: npx tsx src/cli.ts "一年级上册第五课" --no-llm

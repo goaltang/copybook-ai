@@ -1,5 +1,9 @@
 export interface ParseResult {
   book?: string;
+  /** lesson=教材课号模式; text=任意文本模式(粘贴一段话) */
+  mode?: 'lesson' | 'text';
+  /** text 模式下的原始文本 */
+  text?: string;
   table: 'xiezi' | 'shizi';
   lessonFilter: { no?: number; title?: string; type?: '课文' | '识字' | '拼音' } | 'ALL';
   title: string;
@@ -32,6 +36,7 @@ export function parse(input: string): ParseResult {
   if (!raw) return { error: '无法识别的指令: (空)', table: 'xiezi', lessonFilter: { no: 1 }, title: '', grid: 'tian', showPinyin: true, showStrokeCount: true };
 
   const result: ParseResult = {
+    mode: 'lesson',
     table: 'xiezi',
     lessonFilter: {},
     title: '',
@@ -67,6 +72,21 @@ export function parse(input: string): ParseResult {
   }
 
   if (grade === undefined || term === undefined) {
+    // 任意文本模式: 无册别/课号, 不含课式关键词(第X课/默写/全册等), 但包含汉字
+    const lessonHint = /(第\s*[0-9一二三四五六七八九十]+\s*课|课\s*[0-9一二三四五六七八九十]+|课文|识字表|写字表|园地|单元|全册|全部|默写)/.test(raw);
+    if (!lessonHint && /[\u4e00-\u9fff]/.test(raw)) {
+      const textMode: ParseResult = { ...result, mode: 'text', text: raw, lessonFilter: 'ALL' };
+      if (/米字格/.test(raw)) textMode.grid = 'mi';
+      else if (/无格|方格/.test(raw)) textMode.grid = 'plain';
+      if (/不要拼音|无拼音|不带拼音/.test(raw)) textMode.showPinyin = false;
+      if (/不要笔画|不带笔画|不要笔画数/.test(raw)) textMode.showStrokeCount = false;
+      const titleText = raw
+        .replace(/米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|不要笔画|不带笔画|不要笔画数/g, '')
+        .replace(/\s+/g, '')
+        .slice(0, 12);
+      textMode.title = titleText ? `${titleText} 练字帖` : '练字帖';
+      return textMode;
+    }
     return { ...result, error: `无法识别的指令: ${raw}` };
   }
 

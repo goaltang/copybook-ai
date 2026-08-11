@@ -15,7 +15,7 @@ async function main() {
     grid: 'tian',
     showPinyin: true,
     showStrokeCount: true,
-    fontPath: 'fonts/演示春风楷.ttf',
+    fontPath: 'fonts/LXGWWenKai-Regular.ttf',
     latinFontPath: '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
   });
   fs.writeFileSync('out/课文1-秋天-田字格.pdf', pdf);
@@ -30,7 +30,7 @@ async function main() {
     grid: 'mi',
     showPinyin: true,
     showStrokeCount: true,
-    fontPath: 'fonts/演示春风楷.ttf',
+    fontPath: 'fonts/LXGWWenKai-Regular.ttf',
     latinFontPath: '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf',
   });
   fs.writeFileSync('out/一年级上册-全册-米字格.pdf', pdf2);

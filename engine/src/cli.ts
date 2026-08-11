@@ -1,11 +1,12 @@
 import { parse } from './parse.js';
 import { llmParse } from './llm.js';
 import { generateCopybook, type CharSpec } from './index.js';
+import { textToChars } from './text.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '../../data/final');
-const FONT_PATH = path.resolve(import.meta.dirname, '../fonts/演示春风楷.ttf');
+const FONT_PATH = path.resolve(import.meta.dirname, '../fonts/LXGWWenKai-Regular.ttf');
 const LATIN_FONT_PATH = 'fonts/DejaVuSans.ttf';
 const OUT_DIR = path.resolve(import.meta.dirname, '../out');
 
@@ -52,6 +53,42 @@ async function main() {
   if (parsed.error) {
     console.log(`\n错误: ${parsed.error}`);
     process.exit(1);
+  }
+
+  if (parsed.mode === 'text') {
+    const { chars, repeats, uncovered } = textToChars(parsed.text ?? '');
+    if (chars.length === 0) {
+      console.log('\n错误: 没有提取到要练的汉字');
+      process.exit(1);
+    }
+    const repeatDesc = Object.entries(repeats)
+      .filter(([, n]) => (n as number) > 1)
+      .map(([c, n]) => `${c}×${n}`)
+      .join(' ');
+    console.log(`\n课信息: 文本练字 ${chars.length} 字${repeatDesc ? ` (重复: ${repeatDesc})` : ''}`);
+    if (uncovered.length > 0) {
+      console.log(`提示: ${uncovered.length} 字暂无拼音/笔画数据, 不显示拼音: ${uncovered.join('')}`);
+    }
+    console.log(`字列表: ${chars.map(c => c.char).join('')}`);
+
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+    const safeTitle = parsed.title.replace(/[^\w\u4e00-\u9fa5]/g, '_').slice(0, 30);
+    const outFile = path.join(OUT_DIR, `cli-${safeTitle}-${timestamp}.pdf`);
+
+    const pdf = await generateCopybook({
+      title: parsed.title,
+      chars,
+      grid: parsed.grid,
+      showPinyin: parsed.showPinyin,
+      showStrokeCount: parsed.showStrokeCount,
+      fontPath: FONT_PATH,
+      latinFontPath: LATIN_FONT_PATH,
+    });
+    fs.writeFileSync(outFile, pdf);
+    const fileSize = pdf.length;
+    console.log(`\n生成成功: ${outFile}`);
+    console.log(`文件大小: ${fileSize} bytes (${(fileSize / 1024).toFixed(1)} KB)`);
+    process.exit(0);
   }
 
   if (!parsed.book) {
