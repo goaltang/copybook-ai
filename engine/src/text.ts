@@ -45,6 +45,33 @@ function buildCharMap(): Map<string, CharInfo> {
   return charMap;
 }
 
+/** 组词数据缓存: char → 词列表(词频降序) */
+let wordsCache: Record<string, string[]> | null = null;
+
+function loadWords(): Record<string, string[]> {
+  if (wordsCache) return wordsCache;
+  const file = path.join(DATA_DIR, 'words.json');
+  const out: Record<string, string[]> = {};
+  if (fs.existsSync(file)) {
+    const raw = JSON.parse(fs.readFileSync(file, 'utf-8'));
+    for (const [ch, list] of Object.entries((raw as any).words ?? {})) {
+      out[ch] = (list as any[]).map((w) => (w as any).word as string);
+    }
+  }
+  wordsCache = out;
+  return out;
+}
+
+/** 给字谱附加组词(取词频最高的前 max 个), 无组词数据的字原样返回 */
+export function attachWords(chars: CharSpec[], max = 3): CharSpec[] {
+  const wmap = loadWords();
+  return chars.map((c) => {
+    const words = wmap[c.char] ?? [];
+    if (words.length === 0) return c;
+    return { ...c, words: words.slice(0, max) };
+  });
+}
+
 /** 12 册教材顺序(用于累计"已学字"集合) */
 const BOOK_ORDER = [
   'y一年级上册', 'y一年级下册', 'y二年级上册', 'y二年级下册',

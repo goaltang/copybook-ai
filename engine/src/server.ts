@@ -4,7 +4,7 @@ import path from 'node:path';
 import { parse, type ParseResult } from './parse.js';
 import { llmParse } from './llm.js';
 import { generateCopybook, type CharSpec } from './index.js';
-import { textToChars, unlearnedChars } from './text.js';
+import { textToChars, unlearnedChars, attachWords } from './text.js';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '../../data/final');
 const FONT_PATH = path.resolve(import.meta.dirname, '../fonts/LXGWWenKai-Regular.ttf');
@@ -247,10 +247,11 @@ async function handleCopybook(text: string, useLlm: boolean): Promise<{ status: 
 
   const pdf = await generateCopybook({
     title: parsed.title,
-    chars: resolved.chars,
+    chars: parsed.showWords ? attachWords(resolved.chars) : resolved.chars,
     grid: parsed.grid,
     showPinyin: parsed.showPinyin,
     showStrokeCount: parsed.showStrokeCount,
+    showWords: parsed.showWords === true,
     fontPath: FONT_PATH,
     latinFontPath: LATIN_FONT_PATH,
   });

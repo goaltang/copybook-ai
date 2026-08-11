@@ -10,6 +10,7 @@ export interface CharSpec {
   char: string;
   pinyin?: string;      // 带声调拼音, 如 "Le"
   strokes?: number;     // 笔画数
+  words?: string[];     // 组词(showWords 选项时由调用方填充)
 }
 
 export type GridType = 'tian' | 'mi' | 'plain'; // 田字格 / 米字格 / 无格
@@ -23,6 +24,7 @@ export interface CopybookParams {
   rowsPerPage?: number;           // 每页行数, 默认 8
   showPinyin?: boolean;           // 格内显示拼音(格子上方)
   showStrokeCount?: boolean;      // 格子角落显示笔画数
+  showWords?: boolean;            // 格下方显示组词(需 chars 带 words 字段)
   fontPath: string;               // 楷体 TTF 路径(汉字用)
   latinFontPath?: string;         // 拼音用字体(需含带声调拉丁字符), 默认同 fontPath
   pageSize?: { width: number; height: number }; // 默认 A4
@@ -47,9 +49,10 @@ function drawGrid(page: PDFPage, x: number, y: number, size: number, grid: GridT
 export async function generateCopybook(params: CopybookParams): Promise<Uint8Array> {
   const {
     title, chars, grid = 'tian', cellSize = 72, cols = 6, rowsPerPage = 8,
-    showPinyin = true, showStrokeCount = false, fontPath, latinFontPath,
+    showPinyin = true, showStrokeCount = false, showWords = false, fontPath, latinFontPath,
     pageSize = A4,
   } = params;
+  const WORD_ROW_H = 13; // 组词行高(pt)
 
   const doc = await PDFDocument.create();
   doc.registerFontkit(fontkit);
@@ -63,6 +66,7 @@ export async function generateCopybook(params: CopybookParams): Promise<Uint8Arr
   const usableW = pageSize.width - margin * 2;
   const usableH = pageSize.height - margin * 2;
   const gridW = Math.min(cellSize, usableW / cols);
+  const pitch = showWords ? gridW + WORD_ROW_H : gridW;
 
   let page: PDFPage | null = null;
   let col = 0, row = 0, pageStartY = 0;
@@ -85,7 +89,7 @@ export async function generateCopybook(params: CopybookParams): Promise<Uint8Arr
     if (row >= rowsPerPage) { newPage(); }
 
     const x = margin + col * gridW;
-    const y = pageStartY - row * gridW;
+    const y = pageStartY - row * pitch;
 
     drawGrid(page!, x, y, gridW, grid);
 
@@ -110,6 +114,18 @@ export async function generateCopybook(params: CopybookParams): Promise<Uint8Arr
       y: y + gridW * 0.15,
       size: chSize, font, color: rgb(0, 0, 0),
     });
+
+    // 组词: 格子下方, 灰色小字
+    if (showWords && c.words && c.words.length > 0) {
+      const words = c.words.slice(0, 3).join('  ');
+      const wSize = gridW * 0.13;
+      const wW = font.widthOfTextAtSize(words, wSize);
+      page!.drawText(words, {
+        x: x + (gridW - wW) / 2,
+        y: y - WORD_ROW_H + 3,
+        size: wSize, font, color: rgb(0.45, 0.45, 0.45),
+      });
+    }
 
     col++;
   }

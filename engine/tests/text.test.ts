@@ -3,7 +3,7 @@
  * 覆盖: 汉字提取 / 标点空白剔除 / 样式词剔除 / 去重保序 / 未覆盖字提示
  */
 import { describe, it, expect } from 'vitest';
-import { textToChars, unlearnedChars, learnedCharSet } from '../src/text.js';
+import { textToChars, unlearnedChars, learnedCharSet, attachWords } from '../src/text.js';
 
 describe('textToChars 文本→字谱', () => {
   it('提取汉字, 剔除标点空白', () => {
@@ -59,6 +59,22 @@ describe('unlearnedChars 未学字提取', () => {
     const { chars, uncovered } = unlearnedChars('春龘', 'y六年级下册');
     expect(chars.map((c) => c.char)).toEqual(['龘']);
     expect(uncovered).toEqual(['龘']);
+  });
+
+  it('attachWords: 生字表内的字附带组词(词频降序)', () => {
+    const [chun] = attachWords([{ char: '春' }]);
+    expect(chun?.words?.length).toBeGreaterThan(0);
+    expect(chun?.words?.[0]).toBe('春天');
+  });
+
+  it('attachWords: 无组词数据的字原样返回', () => {
+    const [c] = attachWords([{ char: '龘' }]);
+    expect(c?.words).toBeUndefined();
+  });
+
+  it('attachWords: 每字最多 max 个词', () => {
+    const [tian] = attachWords([{ char: '天' }], 2);
+    expect(tian?.words?.length).toBe(2);
   });
 
   it('已学集合随进度单调增长', () => {

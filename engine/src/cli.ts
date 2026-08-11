@@ -1,7 +1,7 @@
 import { parse } from './parse.js';
 import { llmParse } from './llm.js';
 import { generateCopybook, type CharSpec } from './index.js';
-import { textToChars, unlearnedChars } from './text.js';
+import { textToChars, unlearnedChars, attachWords } from './text.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -90,10 +90,11 @@ async function main() {
 
     const pdf = await generateCopybook({
       title: parsed.title,
-      chars,
+      chars: parsed.showWords ? attachWords(chars) : chars,
       grid: parsed.grid,
       showPinyin: parsed.showPinyin,
       showStrokeCount: parsed.showStrokeCount,
+      showWords: parsed.showWords === true,
       fontPath: FONT_PATH,
       latinFontPath: LATIN_FONT_PATH,
     });
@@ -192,10 +193,11 @@ async function main() {
 
   const pdf = await generateCopybook({
     title: parsed.title,
-    chars,
+    chars: parsed.showWords ? attachWords(chars) : chars,
     grid: parsed.grid,
     showPinyin: parsed.showPinyin,
     showStrokeCount: parsed.showStrokeCount,
+    showWords: parsed.showWords === true,
     fontPath: FONT_PATH,
     latinFontPath: LATIN_FONT_PATH,
   });
