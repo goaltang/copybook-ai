@@ -32,10 +32,28 @@ describe('textToChars 文本→字谱', () => {
     expect(chun?.strokes).toBeGreaterThan(0);
   });
 
-  it('生字表未覆盖的字进 uncovered 且无拼音', () => {
-    const { uncovered } = textToChars('龘');
+  it('多音字按上下文定音: "春眠不觉晓"的"觉"→ jué', () => {
+    const { chars } = textToChars('春眠不觉晓');
+    const jue = chars.find((c) => c.char === '觉');
+    expect(jue?.pinyin).toBe('jué');
+  });
+
+  it('拼音统一小写: "春天" → chūn/tiān', () => {
+    const { chars } = textToChars('春天');
+    expect(chars.map((c) => c.pinyin).join('/')).toBe('chūn/tiān');
+  });
+
+  it('生字表未覆盖但 pinyin-pro 认识的字(龘)有拼音无笔画', () => {
+    const { chars, uncovered } = textToChars('龘');
+    expect(chars[0]?.pinyin).toBe('dá');
+    expect(chars[0]?.strokes).toBeUndefined();
+    expect(uncovered.length).toBe(0);
+  });
+
+  it('pinyin-pro 也不认识的字(鿔)进 uncovered 且无拼音', () => {
+    const { uncovered } = textToChars('鿔');
     expect(uncovered.length).toBe(1);
-    expect(uncovered[0]).toBe('龘');
+    expect(uncovered[0]).toBe('鿔');
   });
 
   it('空文本/无汉字 → 空结果', () => {
@@ -58,7 +76,7 @@ describe('unlearnedChars 未学字提取', () => {
   it('教材外的字(龘)任何年级都算未学', () => {
     const { chars, uncovered } = unlearnedChars('春龘', 'y六年级下册');
     expect(chars.map((c) => c.char)).toEqual(['龘']);
-    expect(uncovered).toEqual(['龘']);
+    expect(uncovered).toEqual([]); // 龘 有 pinyin-pro 拼音, 不再 uncovered
   });
 
   it('attachWords: 生字表内的字附带组词(词频降序)', () => {

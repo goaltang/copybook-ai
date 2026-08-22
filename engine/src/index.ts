@@ -4,6 +4,7 @@
  */
 import { PDFDocument, rgb, PDFFont, PDFPage } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
+import subsetFont from 'subset-font';
 import fs from 'node:fs';
 import { type StrokeData, strokeBBox, glyphTransform, drawStrokePath, medianMid, dataToPage } from './strokes.js';
 
@@ -28,6 +29,8 @@ export interface CopybookParams {
   showWords?: boolean;            // 格下方显示组词(需 chars 带 words 字段)
   showStrokes?: boolean;          // 附加笔顺分解页(需传入 strokes 数据)
   strokes?: Map<string, StrokeData>;  // 笔顺数据(char → 笔画), 由调用方加载
+  practiceCells?: number;         // 每个例字后的练习格数(空白供书写), 默认 5
+  traceCells?: number;            // 练习格中前几个印浅灰字供描摹, 默认 0
   fontPath: string;               // 楷体 TTF 路径(汉字用)
   latinFontPath?: string;         // 拼音用字体(需含带声调拉丁字符), 默认同 fontPath
   pageSize?: { width: number; height: number }; // 默认 A4
@@ -53,18 +56,39 @@ export async function generateCopybook(params: CopybookParams): Promise<Uint8Arr
   const {
     title, chars, grid = 'tian', cellSize = 72, cols = 6, rowsPerPage = 8,
     showPinyin = true, showStrokeCount = false, showWords = false,
-    showStrokes = false, strokes, fontPath, latinFontPath,
+    showStrokes = false, strokes, practiceCells = 5, traceCells = 0,
+    fontPath, latinFontPath,
     pageSize = A4,
   } = params;
   const WORD_ROW_H = 13; // 组词行高(pt)
 
   const doc = await PDFDocument.create();
   doc.registerFontkit(fontkit);
+
+  // 收集各字体实际用到的字符, 用 harfbuzz(subset-font)预子集后再嵌入。
+  // 注意: 不能用 @pdf-lib/fontkit 的 subset(对大型 CJK 字体子集会丢字形),
+  // 预子集后以 subset:false 嵌入, 只解析不二次子集。
+  const hanziSet = new Set<string>();
+  const latinSet = new Set<string>();
+  const addAll = (set: Set<string>, s?: string) => { if (s) for (const ch of s) set.add(ch); };
+  addAll(hanziSet, title);
+  addAll(hanziSet, '0123456789 笔顺分解');
+  for (const c of chars) {
+    addAll(hanziSet, c.char);
+    addAll(hanziSet, c.words?.join(''));
+    addAll(latinSet, c.pinyin);
+  }
+  addAll(latinSet, '0123456789 ');
+  if (!latinFontPath) for (const ch of latinSet) hanziSet.add(ch);
+
   const fontBytes = fs.readFileSync(fontPath);
-  const font = await doc.embedFont(fontBytes, { subset: true });
-  const latinFont = latinFontPath
-    ? await doc.embedFont(fs.readFileSync(latinFontPath), { subset: true })
-    : font;
+  const hanziSubset = await subsetFont(fontBytes, [...hanziSet].join(''), { targetFormat: 'sfnt' });
+  const font = await doc.embedFont(hanziSubset, { subset: false });
+  let latinFont: PDFFont = font;
+  if (latinFontPath) {
+    const latinSubset = await subsetFont(fs.readFileSync(latinFontPath), [...latinSet].join(''), { targetFormat: 'sfnt' });
+    latinFont = await doc.embedFont(latinSubset, { subset: false });
+  }
 
   const margin = 42;
   const usableW = pageSize.width - margin * 2;
@@ -87,49 +111,72 @@ export async function generateCopybook(params: CopybookParams): Promise<Uint8Arr
     col = 0; row = 0;
   }
 
-  newPage();
+  // 单元格序列: 每个字 = 1 个例字格 + practiceCells 个练习格(前 traceCells 个印浅灰字供描摹, 其余空白)
+  type Cell = { kind: 'main' | 'trace' | 'blank'; spec: CharSpec };
+  const cells: Cell[] = [];
   for (const c of chars) {
+    cells.push({ kind: 'main', spec: c });
+    for (let i = 0; i < practiceCells; i++) {
+      cells.push({ kind: i < traceCells ? 'trace' : 'blank', spec: c });
+    }
+  }
+
+  newPage();
+  for (const cell of cells) {
     if (col >= cols) { col = 0; row++; }
     if (row >= rowsPerPage) { newPage(); }
 
+    const c = cell.spec;
     const x = margin + col * gridW;
     const y = pageStartY - row * pitch;
 
     drawGrid(page!, x, y, gridW, grid);
 
-    // 拼音: 格子顶部
-    if (showPinyin && c.pinyin) {
-      const py = c.pinyin;
-      const pySize = gridW * 0.16;
-      const pyW = latinFont.widthOfTextAtSize(py, pySize);
-      page!.drawText(py, { x: x + (gridW - pyW) / 2, y: y + gridW - pySize - 3, size: pySize, font: latinFont, color: rgb(0, 0, 0) });
-    }
-    // 笔画数: 左下角
-    if (showStrokeCount && c.strokes) {
-      const s = String(c.strokes);
-      const sSize = gridW * 0.12;
-      page!.drawText(s, { x: x + 3, y: y + 2, size: sSize, font, color: rgb(0.55, 0.55, 0.55) });
-    }
-    // 汉字居中
-    const chSize = gridW * 0.62;
-    const chW = font.widthOfTextAtSize(c.char, chSize);
-    page!.drawText(c.char, {
-      x: x + (gridW - chW) / 2,
-      y: y + gridW * 0.15,
-      size: chSize, font, color: rgb(0, 0, 0),
-    });
+    if (cell.kind === 'main') {
+      // 拼音: 格子顶部
+      if (showPinyin && c.pinyin) {
+        const py = c.pinyin;
+        const pySize = gridW * 0.16;
+        const pyW = latinFont.widthOfTextAtSize(py, pySize);
+        page!.drawText(py, { x: x + (gridW - pyW) / 2, y: y + gridW - pySize - 3, size: pySize, font: latinFont, color: rgb(0, 0, 0) });
+      }
+      // 笔画数: 左下角
+      if (showStrokeCount && c.strokes) {
+        const s = String(c.strokes);
+        const sSize = gridW * 0.12;
+        page!.drawText(s, { x: x + 3, y: y + 2, size: sSize, font, color: rgb(0.55, 0.55, 0.55) });
+      }
+      // 汉字居中
+      const chSize = gridW * 0.62;
+      const chW = font.widthOfTextAtSize(c.char, chSize);
+      page!.drawText(c.char, {
+        x: x + (gridW - chW) / 2,
+        y: y + gridW * 0.15,
+        size: chSize, font, color: rgb(0, 0, 0),
+      });
 
-    // 组词: 格子下方, 灰色小字
-    if (showWords && c.words && c.words.length > 0) {
-      const words = c.words.slice(0, 3).join('  ');
-      const wSize = gridW * 0.13;
-      const wW = font.widthOfTextAtSize(words, wSize);
-      page!.drawText(words, {
-        x: x + (gridW - wW) / 2,
-        y: y - WORD_ROW_H + 3,
-        size: wSize, font, color: rgb(0.45, 0.45, 0.45),
+      // 组词: 格子下方, 灰色小字
+      if (showWords && c.words && c.words.length > 0) {
+        const words = c.words.slice(0, 3).join('  ');
+        const wSize = gridW * 0.13;
+        const wW = font.widthOfTextAtSize(words, wSize);
+        page!.drawText(words, {
+          x: x + (gridW - wW) / 2,
+          y: y - WORD_ROW_H + 3,
+          size: wSize, font, color: rgb(0.45, 0.45, 0.45),
+        });
+      }
+    } else if (cell.kind === 'trace') {
+      // 描摹格: 浅灰汉字, 供孩子描写
+      const chSize = gridW * 0.62;
+      const chW = font.widthOfTextAtSize(c.char, chSize);
+      page!.drawText(c.char, {
+        x: x + (gridW - chW) / 2,
+        y: y + gridW * 0.15,
+        size: chSize, font, color: rgb(0.78, 0.78, 0.78),
       });
     }
+    // blank: 只画格子, 留白供书写
 
     col++;
   }
@@ -207,11 +254,3 @@ export async function generateCopybook(params: CopybookParams): Promise<Uint8Arr
   return doc.save();
 }
 
-/** 从数据包 JSON 组装字帖参数 */
-export function lessonChars(book: any, table: 'shizi' | 'xiezi', lessonNo: number): CharSpec[] {
-  const t = book.tables?.[table];
-  if (!t) return [];
-  const lessons = t.lessons.filter((l: any) => l.no === lessonNo);
-  const chars = lessons.flatMap((l: any) => l.chars);
-  return chars.map((c: any) => ({ char: c.char, pinyin: c.pinyin, strokes: c.strokes }));
-}

@@ -14,8 +14,22 @@ export interface ParseResult {
   showStrokeCount: boolean;
   showWords?: boolean;    // 带组词
   showStrokes?: boolean;  // 带笔顺
+  practiceCells?: number; // 每个例字后的练习格数(前 traceCells 个描摹, 其余空白), 默认 5
+  traceCells?: number;    // 练习格中印浅灰字供描摹的个数, 默认 0
   error?: string;
 }
+
+export interface ParseOptions {
+  /** 会话上下文: 用户最近使用的册别(如 y二年级上册)。用于补全"第8课/全册"等缺册别输入 */
+  defaultBook?: string | undefined;
+}
+
+/** 12 册教材数据包名(一上 ~ 六下) */
+export const BOOKS = [
+  'y一年级上册', 'y一年级下册', 'y二年级上册', 'y二年级下册',
+  'y三年级上册', 'y三年级下册', 'y四年级上册', 'y四年级下册',
+  'y五年级上册', 'y五年级下册', 'y六年级上册', 'y六年级下册',
+] as const;
 
 const CN_NUM: Record<string, number> = {
   '一': 1, '二': 2, '三': 3, '四': 4, '五': 5,
@@ -41,8 +55,44 @@ function parseCnNum(s: string): number | undefined {
 }
 
 const gradeNames: Record<number, string> = { 1: '一', 2: '二', 3: '三', 4: '四', 5: '五', 6: '六' };
+const GRADE_TO_NUM: Record<string, number> = { '一': 1, '二': 2, '三': 3, '四': 4, '五': 5, '六': 6 };
 
-export function parse(input: string): ParseResult {
+/** 样式/口语词(标题与文本提取前剔除, 避免混入要练的字) */
+const STYLE_STRIP_RE =
+  /米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|带拼音|要拼音|不要笔画数|不要笔画|不带笔画|带笔画数|带笔画|要笔画|不要描红|带描红|要描红|描红|不要练习格|不要练习|无练习格|只要例字|不要空格|每\s*个?\s*字\s*写?\s*[0-9一二三四五六七八九十]*\s*(?:个|遍|次|行)?|带组词|要组词|组词|带笔顺|要笔顺|笔顺|练字帖|帮我|请生成|生成|打印|制作|一份|一个|字帖/g;
+
+/** 统一的样式开关解析: 网格/拼音/笔画数/组词/笔顺/练习格/描红 */
+function applySwitches(r: ParseResult, raw: string): void {
+  if (/米字格/.test(raw)) r.grid = 'mi';
+  else if (/田字格/.test(raw)) r.grid = 'tian';
+  else if (/无格|方格/.test(raw)) r.grid = 'plain';
+
+  if (/不要拼音|无拼音|不带拼音/.test(raw)) r.showPinyin = false;
+  else if (/带拼音|要拼音/.test(raw)) r.showPinyin = true;
+
+  if (/不要笔画|不带笔画|不要笔画数/.test(raw)) r.showStrokeCount = false;
+  else if (/带笔画|要笔画|带笔画数/.test(raw)) r.showStrokeCount = true;
+
+  if (/带组词|要组词|组词/.test(raw)) r.showWords = true;
+  if (/带笔顺|要笔顺|笔顺/.test(raw)) r.showStrokes = true;
+
+  // 练习格数量: "每字写8个" / "每字5遍"
+  const perChar = raw.match(/每\s*个?\s*字\s*写?\s*([0-9一二三四五六七八九十]+)\s*(?:个|遍|次|行)?/);
+  if (perChar) {
+    const n = parseCnNum(perChar[1]!);
+    if (n !== undefined) r.practiceCells = Math.max(0, Math.min(30, n));
+  }
+  // 描红: 练习格前几个印浅灰字供描写
+  if (/不要描红|无描红/.test(raw)) r.traceCells = 0;
+  else if (/带描红|要描红|描红/.test(raw)) r.traceCells = Math.min(2, r.practiceCells ?? 5);
+  // 只要例字: 关闭全部练习格
+  if (/不要练习格|不要练习|无练习格|只要例字|不要空格/.test(raw)) {
+    r.practiceCells = 0;
+    r.traceCells = 0;
+  }
+}
+
+export function parse(input: string, opts: ParseOptions = {}): ParseResult {
   const raw = input.trim();
   if (!raw) return { error: '无法识别的指令: (空)', table: 'xiezi', lessonFilter: { no: 1 }, title: '', grid: 'tian', showPinyin: true, showStrokeCount: true };
 
@@ -56,6 +106,8 @@ export function parse(input: string): ParseResult {
     showStrokeCount: true,
     showWords: false,
     showStrokes: false,
+    practiceCells: 5,
+    traceCells: 0,
   };
 
   let remaining = raw;
@@ -107,14 +159,9 @@ export function parse(input: string): ParseResult {
         lessonFilter: 'ALL',
       };
       if (learnedBook) textMode.learnedBook = learnedBook;
-      if (/米字格/.test(raw)) textMode.grid = 'mi';
-      else if (/无格|方格/.test(raw)) textMode.grid = 'plain';
-      if (/不要拼音|无拼音|不带拼音/.test(raw)) textMode.showPinyin = false;
-      if (/不要笔画|不带笔画|不要笔画数/.test(raw)) textMode.showStrokeCount = false;
-      if (/带组词|要组词|组词/.test(raw)) textMode.showWords = true;
-      if (/带笔顺|要笔顺|笔顺/.test(raw)) textMode.showStrokes = true;
+      applySwitches(textMode, raw);
       const titleText = raw
-        .replace(/米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|不要笔画|不带笔画|不要笔画数|带组词|要组词|组词|带笔顺|要笔顺|笔顺/g, '')
+        .replace(STYLE_STRIP_RE, '')
         .replace(/\s+/g, '')
         .slice(0, 12);
       textMode.title = learnedBook
@@ -124,14 +171,25 @@ export function parse(input: string): ParseResult {
           : '练字帖';
       return textMode;
     }
-    return { ...result, error: `无法识别的指令: ${raw}` };
+    // 会话上下文补全: 有课式关键词但缺册别时, 用最近使用的册别继续解析
+    const db = opts.defaultBook;
+    const dbMatch = db?.match(/^y([一二三四五六])年级([上下])册$/);
+    const dbGrade = dbMatch ? GRADE_TO_NUM[dbMatch[1]!] : undefined;
+    if (lessonHint && db && dbMatch && dbGrade !== undefined) {
+      grade = dbGrade;
+      term = dbMatch[2] as '上' | '下';
+      result.book = db;
+      // remaining 保持不变, 继续走课号/全册解析
+    } else {
+      return { ...result, error: `无法识别的指令: ${raw}` };
+    }
   }
 
   result.book = `y${gradeNames[grade]}年级${term}册`;
 
   // 已识别年级+册, 但内容不含课式指令且含汉字 → 未学字模式(如 "二年级下册 春眠不觉晓")
   const styleRemoved = remaining
-    .replace(/米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|不要笔画|不带笔画|不要笔画数|带组词|要组词|组词|带笔顺|要笔顺|笔顺/g, '')
+    .replace(STYLE_STRIP_RE, '')
     .replace(/\s+/g, '');
   if (
     !/课|课文|识字表|写字表|园地|单元|全册|全部|默写|识字/.test(remaining) &&
@@ -140,12 +198,7 @@ export function parse(input: string): ParseResult {
   ) {
     const unlearned: ParseResult = { ...result, mode: 'unlearned', text: styleRemoved, lessonFilter: 'ALL' };
     unlearned.learnedBook = result.book;
-    if (/米字格/.test(raw)) unlearned.grid = 'mi';
-    else if (/无格|方格/.test(raw)) unlearned.grid = 'plain';
-    if (/不要拼音|无拼音|不带拼音/.test(raw)) unlearned.showPinyin = false;
-    if (/不要笔画|不带笔画|不要笔画数/.test(raw)) unlearned.showStrokeCount = false;
-    if (/带组词|要组词|组词/.test(raw)) unlearned.showWords = true;
-    if (/带笔顺|要笔顺|笔顺/.test(raw)) unlearned.showStrokes = true;
+    applySwitches(unlearned, raw);
     unlearned.title = `${bookLabel(result.book)}未学字 练字帖`;
     return unlearned;
   }
@@ -184,6 +237,9 @@ export function parse(input: string): ParseResult {
     const numStr = lessonNoMatch[1] || lessonNoMatch[2] || lessonNoMatch[3];
     lessonNo = parseCnNum(numStr!);
     remaining = remaining.replace(lessonNoMatch[0], ' ').trim();
+    if (lessonNo === undefined) {
+      return { ...result, error: `无法识别的课号: ${numStr}` };
+    }
   } else if (parsedType) {
     const bareNumMatch = remaining.match(/^([一二三四五六七八九十\d]+)\s*/);
     if (bareNumMatch) {
@@ -220,18 +276,7 @@ export function parse(input: string): ParseResult {
     }
   }
 
-  if (/米字格/.test(raw)) result.grid = 'mi';
-  else if (/田字格/.test(raw)) result.grid = 'tian';
-  else if (/无格|方格/.test(raw)) result.grid = 'plain';
-
-  if (/不要拼音|无拼音|不带拼音/.test(raw)) result.showPinyin = false;
-  else if (/带拼音|要拼音/.test(raw)) result.showPinyin = true;
-
-  if (/不要笔画|不带笔画|不要笔画数/.test(raw)) result.showStrokeCount = false;
-  else if (/带笔画|要笔画|带笔画数/.test(raw)) result.showStrokeCount = true;
-
-  if (/带组词|要组词|组词/.test(raw)) result.showWords = true;
-  if (/带笔顺|要笔顺|笔顺/.test(raw)) result.showStrokes = true;
+  applySwitches(result, raw);
 
   const bookTitle = `${gradeNames[grade]}年级${term}册`;
   if (result.lessonFilter === 'ALL') {

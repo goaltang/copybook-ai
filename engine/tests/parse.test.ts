@@ -148,6 +148,60 @@ describe('parse 规则解析器', () => {
     expect(r.mode).not.toBe('text');
     expect(r.error).toBeDefined();
   });
+
+  it('默认练习格: 每字 5 个练习格, 无描红', () => {
+    const r = parse('一年级上册第五课');
+    expect(r.practiceCells).toBe(5);
+    expect(r.traceCells).toBe(0);
+  });
+
+  it('练习格数量: "每字写8个" → practiceCells=8', () => {
+    const r = parse('一年级上册第五课 每字写8个');
+    expect(r.practiceCells).toBe(8);
+  });
+
+  it('描红: "带描红" → traceCells=2', () => {
+    const r = parse('一年级上册第五课 带描红');
+    expect(r.traceCells).toBe(2);
+    expect(r.practiceCells).toBe(5);
+  });
+
+  it('只要例字: "不要练习格" → practiceCells=0, traceCells=0', () => {
+    const r = parse('一年级上册第五课 不要练习格');
+    expect(r.practiceCells).toBe(0);
+    expect(r.traceCells).toBe(0);
+  });
+
+  it('会话上下文: 缺册别 + defaultBook → 规则解析成功', () => {
+    const r = parse('第8课', { defaultBook: 'y二年级上册' });
+    expect(r.error).toBeUndefined();
+    expect(r.book).toBe('y二年级上册');
+    expect(r.lessonFilter).toEqual({ no: 8 });
+  });
+
+  it('会话上下文: "全册" + defaultBook → ALL', () => {
+    const r = parse('全册 不要拼音', { defaultBook: 'y三年级下册' });
+    expect(r.error).toBeUndefined();
+    expect(r.book).toBe('y三年级下册');
+    expect(r.lessonFilter).toBe('ALL');
+  });
+
+  it('会话上下文: 自由表达 + defaultBook → 课号解析', () => {
+    const r = parse('今晚作业默写第8课词语', { defaultBook: 'y三年级下册' });
+    expect(r.error).toBeUndefined();
+    expect(r.book).toBe('y三年级下册');
+    expect(r.lessonFilter).toEqual({ no: 8 });
+  });
+
+  it('无 defaultBook 时自由表达仍留给 LLM', () => {
+    const r = parse('今晚作业默写第8课词语');
+    expect(r.error).toBeDefined();
+  });
+
+  it('无效 defaultBook 被忽略', () => {
+    const r = parse('第8课', { defaultBook: '乱来的值' });
+    expect(r.error).toBeDefined();
+  });
 });
 
 describe('CLI --no-llm 路径(集成)', () => {

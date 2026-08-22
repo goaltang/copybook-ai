@@ -1,12 +1,18 @@
 <script setup>
 import { ref, nextTick, watch } from 'vue';
+import * as pdfjsLib from 'pdfjs-dist';
+import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
 const messages = ref([]);
 const input = ref('');
 const sending = ref(false);
 const listRef = ref(null);
+// 会话上下文: 记住最近使用的册别, 补全"第8课/全册"等缺册别输入
+const lastBook = ref(localStorage.getItem('zitie.lastBook') || '');
 
-const CHIPS = ['一年级上册第五课', '今晚作业默写第8课词语', '全册 不要拼音', '六年级上册第3课'];
+const CHIPS = ['一年级上册第五课 带描红', '今晚作业默写第8课词语', '春眠不觉晓 米字格', '全册 不要拼音'];
 
 const GRID_NAMES = { tian: '田字格', mi: '米字格', plain: '无格' };
 
@@ -30,7 +36,19 @@ function send(text) {
   messages.value.push({ id: loadingId, role: 'loading' });
   sending.value = true;
   requestCopybook(value)
-    .then((data) => {
+    .then(async (data) => {
+      // 首页渲染成图片做预览(移动端 iframe 内嵌 PDF 普遍不可用)
+      try {
+        const preview = await renderPreview(data.pdfDataUrl);
+        data.previewImg = preview.img;
+        data.pageCount = preview.pages;
+      } catch (e) {
+        console.warn('预览渲染失败, 仍可下载:', e);
+      }
+      if (data.book) {
+        lastBook.value = data.book;
+        localStorage.setItem('zitie.lastBook', data.book);
+      }
       const idx = messages.value.findIndex((m) => m.id === loadingId);
       if (idx !== -1) {
         messages.value.splice(idx, 1, { id: loadingId, role: 'ai', text: value, data });
@@ -53,7 +71,7 @@ async function requestCopybook(text) {
     res = await fetch('/api/copybook', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ text, llm: true }),
+      body: JSON.stringify({ text, llm: true, lastBook: lastBook.value || undefined }),
     });
   } catch (e) {
     throw new Error('网络错误, 请确认后端服务已启动');
@@ -67,6 +85,7 @@ async function requestCopybook(text) {
   const filename = `字帖-${title}.pdf`;
   return {
     source: body.source,
+    book: body.parse?.book || '',
     title,
     lessonDesc: body.lessonInfo?.desc || '',
     charCount: body.lessonInfo?.charCount ?? 0,
@@ -76,6 +95,21 @@ async function requestCopybook(text) {
     pdfDataUrl,
     filename,
   };
+}
+
+async function renderPreview(dataUrl) {
+  const base64 = dataUrl.slice(dataUrl.indexOf(',') + 1);
+  const bin = atob(base64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  const doc = await pdfjsLib.getDocument({ data: bytes }).promise;
+  const page = await doc.getPage(1);
+  const viewport = page.getViewport({ scale: 1.6 });
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.floor(viewport.width);
+  canvas.height = Math.floor(viewport.height);
+  await page.render({ canvasContext: canvas.getContext('2d'), viewport }).promise;
+  return { img: canvas.toDataURL('image/png'), pages: doc.numPages };
 }
 
 function download(m) {
@@ -136,7 +170,9 @@ function useChip(c) {
             <span class="dim" v-if="m.data.showPinyin === false">· 不带拼音</span>
             <span class="dim" v-if="m.data.showStrokeCount === false">· 不带笔画数</span>
           </div>
-          <iframe class="pdf-preview" :src="m.data.pdfDataUrl" title="字帖预览"></iframe>
+          <img v-if="m.data.previewImg" class="pdf-preview" :src="m.data.previewImg" alt="字帖预览 第1页" />
+          <p v-else class="preview-fallback">本页预览不可用, 请下载 PDF 查看</p>
+          <p v-if="m.data.pageCount" class="preview-meta">预览第 1 页 · 共 {{ m.data.pageCount }} 页 · 打印请点下载</p>
           <button class="download-btn" @click="download(m)">下载 PDF</button>
         </div>
       </div>
@@ -354,11 +390,22 @@ function useChip(c) {
 
 .pdf-preview {
   width: 100%;
-  height: 500px;
   margin-top: 10px;
   border: 1px solid #e8dfcc;
   border-radius: 10px;
-  background: #f4f4f4;
+  background: #fff;
+}
+
+.preview-fallback {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #a2957f;
+}
+
+.preview-meta {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #a2957f;
 }
 
 .download-btn {

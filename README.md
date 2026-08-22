@@ -14,6 +14,9 @@
 - **提取未学字** — 粘贴文章 + 说年级,自动挑出"孩子还没学过的字"生成字帖(预习/复习神器)
 - **带组词** — 说"带组词",每个字下方显示常用组词(CC-CEDICT,按词频排序)
 - **带笔顺** — 说"带笔顺",字帖末尾附笔顺分解页(累加式:每格多一笔,当前笔标序号)
+- **可写练习格** — 每个例字默认带 5 个练习格;"每字写3个"自定义数量;"带描红"前 2 格印浅灰字供描摹;"只要例字"关闭练习格
+- **多音字定音** — 文本模式用 pinyin-pro 按上下文定音("春眠不觉晓"的"觉"→ jué、"银行"的"行"→ háng),拼音统一小写
+- **会话记忆** — Web 端记住最近使用的册别,"第8课/全册"等缺册别输入自动补全,无需每次重复年级
 - **离线可用** — 规则解析器完全本地运行,不依赖网络与 API key
 - **双解析架构** — 规则先行(免费/快/离线),LLM 只处理规则解析失败的输入
 - **矢量 PDF** — pdf-lib 生成矢量字帖,任意缩放打印依然清晰
@@ -66,12 +69,14 @@ export OPENCODE_GO_API_KEY=your_key   # PowerShell: $env:OPENCODE_GO_API_KEY="yo
 
 - 网关:OpenAI 兼容接口 `https://opencode.ai/zen/go/v1`,模型 `deepseek-v4-flash`
 - **未设置 key 时自动降级为纯规则解析**,CLI 加 `--no-llm` 或请求体 `{"llm":false}` 可显式禁用
+- 可用环境变量覆盖(部署无需改代码):`LLM_API_BASE`(网关)、`LLM_MODEL`(模型)、`LLM_PROXY_URL`(可选 HTTP 代理,未设置时读 `HTTPS_PROXY`,再没有则直连)
 
 ## 使用示例
 
 | 输入 | 解析 | 输出 |
 |---|---|---|
 | 一年级上册第五课 米字格 | 规则 | 一年级上册第5课,3 字(虫/云/山),米字格 PDF |
+| 一年级上册第五课 带描红 每字写3个 | 规则 | 例字 + 2 描红格 + 1 空白格/字 |
 | 一上5课 | 规则 | 同上(简称也支持) |
 | 二年级下册识字5 | 规则 | 识字表第5课,9 字,田字格 PDF |
 | 六年级上册第3课 | 规则 | 六年级无识字表,自动用写字表,3 字 |
@@ -81,7 +86,7 @@ export OPENCODE_GO_API_KEY=your_key   # PowerShell: $env:OPENCODE_GO_API_KEY="yo
 | 今晚作业默写第8课词语 | 规则失败 → LLM 兜底 | 一年级上册第8课会写字(需 API key) |
 | 胡说八道 | 规则失败 → LLM 失败 | 报错:`无法识别的指令: 胡说八道` |
 
-网格:米字格 / 田字格 / 无格(方格);开关:拼音、笔画数、组词、笔顺(如"不要拼音""带组词""带笔顺")。
+网格:米字格 / 田字格 / 无格(方格);开关:拼音、笔画数、组词、笔顺(如"不要拼音""带组词""带笔顺");练习:每字N个 / 带描红 / 只要例字。
 
 ## 架构说明
 
@@ -110,7 +115,8 @@ export OPENCODE_GO_API_KEY=your_key   # PowerShell: $env:OPENCODE_GO_API_KEY="yo
                        │
 ┌──────────────────────▼─────────────────────────────────┐
 │   PDF 生成(pdf-lib 矢量)                                 │
-│   演示春风楷 + DejaVu Sans(拼音声调)                      │
+│   霞鹜文楷 LXGW WenKai + DejaVu Sans(拼音声调)            │
+│   subset-font(harfbuzz)预子集, 修复大字体子集丢字形        │
 │   田字格 / 米字格 / 无格 · 拼音 / 笔画开关                 │
 └────────────────────────────────────────────────────────┘
 ```
@@ -125,7 +131,7 @@ export OPENCODE_GO_API_KEY=your_key   # PowerShell: $env:OPENCODE_GO_API_KEY="yo
 - **协议**:
   - 教材生字为事实数据,据公开教材提取整理
   - cnchar:Apache-2.0
-  - 演示春风楷:OFL(免费商用);DejaVu Sans:自由字体
+  - 霞鹜文楷 LXGW WenKai:OFL(免费商用);DejaVu Sans:自由字体;pinyin-pro:MIT;subset-font:BSD-3-Clause
   - 详细提取方法见 [data/README.md](data/README.md)
 
 感谢 [TapXWorld/ChinaTextbook](https://github.com/TapXWorld/ChinaTextbook) 提供的教材 PDF。
@@ -133,8 +139,9 @@ export OPENCODE_GO_API_KEY=your_key   # PowerShell: $env:OPENCODE_GO_API_KEY="yo
 ## Roadmap
 
 - [ ] 2024 新版教材数据(2024 秋季起 1-3 年级换新版,需另整理)
-- [ ] 组词(CC-CEDICT,CC BY-SA 4.0)
-- [ ] 笔顺(hanzi-writer-data,MIT)
+- [x] 组词(CC-CEDICT,CC BY-SA 4.0)— "带组词"
+- [x] 笔顺(hanzi-writer-data,MIT)— "带笔顺"
+- [x] 练习格/描红/每字个数 — 字帖可写
 - [ ] 模板广场(拼音描红、笔顺练习、古诗抄写等模板分享)
 
 ## License

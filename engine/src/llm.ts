@@ -1,29 +1,19 @@
 import { createOpenAICompatible } from '@ai-sdk/openai-compatible';
 import { generateText } from 'ai';
-import type { ParseResult } from './parse.js';
+import { BOOKS, type ParseResult } from './parse.js';
 
-const API_BASE = 'https://opencode.ai/zen/go/v1';
-const MODEL = 'deepseek-v4-flash';
-const PROXY_URL = 'http://127.0.0.1:7897';
+// 全部可用环境变量覆盖, 部署环境无需改代码:
+//   LLM_API_BASE   OpenAI 兼容网关地址
+//   LLM_MODEL      模型名
+//   LLM_PROXY_URL  可选 HTTP 代理(未设置时读 HTTPS_PROXY/https_proxy, 再没有则直连)
+const API_BASE = process.env.LLM_API_BASE || 'https://opencode.ai/zen/go/v1';
+const MODEL = process.env.LLM_MODEL || 'deepseek-v4-flash';
+const PROXY_URL =
+  process.env.LLM_PROXY_URL || process.env.HTTPS_PROXY || process.env.https_proxy || '';
 const TIMEOUT_MS = 90_000;
 const MAX_ATTEMPTS = 2;
 
 (globalThis as any).AI_SDK_LOG_WARNINGS = false;
-
-const BOOKS = [
-  'y一年级上册',
-  'y一年级下册',
-  'y二年级上册',
-  'y二年级下册',
-  'y三年级上册',
-  'y三年级下册',
-  'y四年级上册',
-  'y四年级下册',
-  'y五年级上册',
-  'y五年级下册',
-  'y六年级上册',
-  'y六年级下册',
-] as const;
 
 const BOOK_NAMES = BOOKS.join('\n');
 
@@ -115,7 +105,10 @@ function toParseResult(j: LlmJson): ParseResult | null {
   return result;
 }
 
-export async function llmParse(input: string): Promise<ParseResult | null> {
+export async function llmParse(
+  input: string,
+  defaultBook?: string,
+): Promise<ParseResult | null> {
   const apiKey = process.env.OPENCODE_GO_API_KEY;
   if (!apiKey) {
     console.log('LLM: 未设置 OPENCODE_GO_API_KEY, 跳过 AI 解析');
@@ -124,17 +117,18 @@ export async function llmParse(input: string): Promise<ParseResult | null> {
 
   const { fetch: undiciFetch, ProxyAgent } = await import('undici');
 
+  // 仅在配置了代理时走 ProxyAgent, 否则直连(部署环境通常无本地代理)
   const proxyFetch = (async (url: any, init?: any) => {
-    const dispatcher = new ProxyAgent(PROXY_URL);
-    return undiciFetch(url, {
+    const options: any = {
       ...(init ?? {}),
-      dispatcher,
       headers: {
         'user-agent':
           'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36',
         ...(init?.headers ?? {}),
       },
-    });
+    };
+    if (PROXY_URL) options.dispatcher = new ProxyAgent(PROXY_URL);
+    return undiciFetch(url, options);
   }) as unknown as typeof fetch;
 
   const provider = createOpenAICompatible({
@@ -150,7 +144,9 @@ export async function llmParse(input: string): Promise<ParseResult | null> {
 ${BOOK_NAMES}
 
 JSON 字段说明:
-- book: 上表 12 个文件名之一; 用户没有提到年级/册别时(如"第8课""默写第X课词语""作业"), 默认 "y一年级上册"
+- book: 上表 12 个文件名之一; 用户没有提到年级/册别时(如"第8课""默写第X课词语""作业"),${
+    defaultBook ? ` 使用用户当前册别 "${defaultBook}"` : ' 默认 "y一年级上册"'
+  }
 - table: 写字表为 "xiezi"(默认), 只有用户明确说"认字/识字/会认字"时才为 "shizi"
 - no: 课号 1-40 的整数; 用户没说课号时用 null
 - type: "课文" | "识字" | "拼音" | null(用户明确提到才填)

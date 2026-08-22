@@ -1,10 +1,13 @@
 /**
  * 任意文本 → 字谱(CharSpec[]) 管线
- * 输入一段话(古诗/作文/文章片段), 提取汉字 → 查 12 册生字表属性(拼音/笔画) → 去重保序
- * 数据源: data/final/*.json(12 册生字表 + 语文园地, 2980 唯一字)
+ * 输入一段话(古诗/作文/文章片段), 提取汉字 → 拼音/笔画 → 去重保序
+ * 拼音: pinyin-pro 按上下文定音(多音字, 如"春眠不觉晓"的"觉"→ jué);
+ *       pinyin-pro 不认识的字回退 12 册生字表; 两者都无 → uncovered
+ * 笔画: 12 册生字表(data/final/*.json, 2980 唯一字)
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import { pinyin } from 'pinyin-pro';
 import type { CharSpec } from './index.js';
 
 const DATA_DIR = path.resolve(import.meta.dirname, '../../data/final');
@@ -118,17 +121,23 @@ export function learnedCharSet(learnedBook: string): Set<string> {
 
 /** 练字选项/口语指令词(这些不是要练的字, 提取前剔除) */
 const STRIP_PATTERN =
-  /米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|带拼音|要拼音|不要笔画|不带笔画|不要笔画数|带笔画|带笔画数|带组词|要组词|组词|带笔顺|要笔顺|笔顺|练字帖|帮我|请生成|生成|打印|制作|一份|一个|字帖/g;
+  /米字格|田字格|无格|方格|不要拼音|无拼音|不带拼音|带拼音|要拼音|不要笔画数|不要笔画|不带笔画|带笔画数|带笔画|要笔画|不要描红|带描红|要描红|描红|不要练习格|不要练习|无练习格|只要例字|不要空格|每\s*个?\s*字\s*写?\s*[0-9一二三四五六七八九十]*\s*(?:个|遍|次|行)?|带组词|要组词|组词|带笔顺|要笔顺|笔顺|练字帖|帮我|请生成|生成|打印|制作|一份|一个|字帖/g;
+
+/** pinyin-pro 输出是否为合法带调拼音(未知字会原样返回汉字) */
+const PINYIN_RE = /^[a-züāáǎàēéěèīíǐìōóǒòūúǔùǖǘǚǜ]+$/;
+function isPinyin(s: unknown): s is string {
+  return typeof s === 'string' && PINYIN_RE.test(s);
+}
 
 export interface TextCharsResult {
   chars: CharSpec[];
   /** 原文中各字出现次数(用于提示重复字) */
   repeats: Record<string, number>;
-  /** 生字表未覆盖、无拼音/笔画的字 */
+  /** 无法获得拼音的字(生字表与 pinyin-pro 均未覆盖) */
   uncovered: string[];
 }
 
-/** 提取文本中的汉字 → 去重(按首现顺序) → 附拼音/笔画 */
+/** 提取文本中的汉字 → 去重(按首现顺序) → 上下文拼音 + 生字表笔画 */
 export function textToChars(text: string): TextCharsResult {
   const map = buildCharMap();
   const cleaned = text
@@ -138,21 +147,29 @@ export function textToChars(text: string): TextCharsResult {
   const repeats: Record<string, number> = {};
   for (const ch of cleaned) repeats[ch] = (repeats[ch] ?? 0) + 1;
 
+  // 整段一次性转拼音, 保留上下文(多音字按词定音)
+  const ctxPys = cleaned
+    ? (pinyin(cleaned, { toneType: 'symbol', type: 'array' }) as unknown as string[])
+    : [];
+
   const chars: CharSpec[] = [];
   const uncovered: string[] = [];
   const seen = new Set<string>();
+  let i = 0;
   for (const ch of cleaned) {
+    const ctxPy: unknown = ctxPys[i];
+    i++;
     if (seen.has(ch)) continue;
     seen.add(ch);
     const info = map.get(ch);
-    if (info?.pinyin) {
-      const spec: CharSpec = { char: ch, pinyin: info.pinyin };
-      if (info.strokes !== undefined) spec.strokes = info.strokes;
-      chars.push(spec);
-    } else {
-      uncovered.push(ch);
-      chars.push({ char: ch });
-    }
+    let py: string | undefined;
+    if (isPinyin(ctxPy)) py = ctxPy;
+    else if (info?.pinyin) py = info.pinyin.toLowerCase();
+    const spec: CharSpec = { char: ch };
+    if (py !== undefined) spec.pinyin = py;
+    if (info?.strokes !== undefined) spec.strokes = info.strokes;
+    chars.push(spec);
+    if (py === undefined) uncovered.push(ch);
   }
   return { chars, repeats, uncovered };
 }
